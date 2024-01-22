@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Admin Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="main">Event Admin Page</h1>  
+    <div id="eventContainer">
+        <div id="imageUploadSpace">
+            <input type="file" id="img" required >
+            Upload  IMAGE
+        </div>
+        <form id="eventForm">
+            <label for="eventName">Event Name:</label>
+            <input type="text" id="eventName" required>
+            
+            <label for="eventDate">Event Date:</label>
+            <input type="date" id="eventDate" required>
+            
+            <label for="eventDescprition">Event Description :</label>
+            <input type="text" id="eventDescprition" required>
+
+            <label for="eventLocation">Event Location:</label>
+            <input type="text" id="eventLocation" required>
+            <button type="button" onclick="addEvent()">Add Event</button>
+        </form>
+    </div>
+    <div id="eventList">
+        
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
