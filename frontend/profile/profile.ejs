@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profiles</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #222 ;
+    color: #fff;
+  }
+  
+  #profile-form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  input {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #333;
+    background-color: #ddd;
+  }
+  
+  button {
+    padding: 12px;
+    background-color: #d9534f;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #c9302c;
+  }
+  
+  #profile-cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  .card {
+    background-color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    width: 200px;
+    border-radius: 8px;
+    transition: transform 0.3s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card img {
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  
+  .card p {
+    color: #999;
+    font-size: 14px;
+    margin: 0;
+  }
+  
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Colony Management</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/event">Events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/createProfile">Profile</a>
+        </li>
+        <!-- Add more navigation links as needed -->
+      </ul>
+    </div>
+  </nav>
+    <a href="/getProfiles" style="color: aliceblue; "><h2>Check other profiles</h2></a>
+  <div id="profile-form">
+    <h2>Create Profile</h2>
+    <form action="/createProfile" method="POST">
+      <!-- Use "user[name]" format for the fields -->
+      <label for="user[username]">Username:</label>
+      <input type="text" id="user[username]" name="user[username]" required>
+
+      <label for="user[email]">Email:</label>
+      <input type="email" id="user[email]" name="user[email]" required>
+
+      <label for=user[phoneNumber]>Phone Number:</label>
+      <input type="tel" id="user[phoneNumber]" name="user[phoneNumber]" required>
+
+      <label for="user[dateOfBirth]">Date of Birth:</label>
+      <input type="date" id="user[dateOfBirth]" name="user[dateOfBirth]">
+
+      <label for="user[bio]">Bio:</label>
+      <textarea id="user[bio]" name="user[bio]"></textarea>
+
+      <label for="user[profileImage]">Profile Image URL:</label>
+      <input type="text" id="user[profileImage]" name="user[profileImage]">
+
+      <button type="submit">Create Profile</button>
+    </form>
+  </div>
+
+  <div id="profile-cards"></div>
+
+  <!-- <script src="scripts.js"></script> -->
+</body>
+
+</html>
