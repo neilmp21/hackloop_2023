@@ -12,6 +12,9 @@ Team weshowcode for hackloop 2023.
    
 # things to figure out 
   1. connecting js objects in backend to frontend react!
+  2. add styling....[.ejs files are same as .html]
+  3. what are the next features
+  4. 
 
 
 
@@ -19,5 +22,6 @@ Team weshowcode for hackloop 2023.
   1. Fork the repo to ur account
   2. clone repo
   3. cd hackloop_2023/backend
-  4. npm i
-  5. http://localhost:3001/
+  4. connect ur mongoDB, change MONGO_URL = 'mongodb://127.0.0.1:27017/Hackloop(ur db name)' in index.js
+  5. npm i
+  6. http://localhost:3001/
