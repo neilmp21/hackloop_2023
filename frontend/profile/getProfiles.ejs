@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profiles</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles.css"> <!-- Link to your custom styles -->
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Colony Management</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/event">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/createProfile">Profile</a>
+                </li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </div>
+    </nav>
+
+  <div class="container mt-3">
+    <div>
+        <br>
+        <h2>These are all the profiles in our society</h2>
+        <br>
+    </div>
+
+    <% if (profiles.length==0) { %>
+      <h2>No profiles added yet :(</h2>
+      <h4>Be the first One</h4>
+    <% } %>
+
+    <div class="row">
+        
+      <% profiles.forEach(profile => { %>
+        <div class="card col-md-4 mb-3">
+          <img class="card-img-top" src="<%= profile.profileImage %>" alt="<%= profile.username %>">
+          <div class="card-body">
+            <h5 class="card-title"><%= profile.username %></h5>
+            <p class="card-text">Phone: <%= profile.phoneNumber %></p>
+            <form action="/profile/<%=profile._id%>?_method=DELETE" method="post">
+                <button class="btn btn-danger" >Delete</button>
+            </form>
+            
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="/scripts.js"></script>
+
+  <!-- <script>
+    function deleteProfile(id) {
+      fetch(`/deleteProfile/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(result => {
+          if (result.success) {
+            fetchProfiles();
+          } else {
+            console.error(result.message);
+          }
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error);
+        });
+    }
+
+    function fetchProfiles() {
+      fetch('/getProfiles')
+        .then(response => response.json())
+        .then(profiles => {
+          displayProfiles(profiles);
+        });
+    }
+
+    function displayProfiles(profiles) {
+      const profileCards = document.querySelector('.row');
+      profileCards.innerHTML = '';
+
+      profiles.forEach(profile => {
+        const card = createProfileCard(profile);
+        profileCards.appendChild(card);
+      });
+    }
+
+    function createProfileCard(profile) {
+      const card = document.createElement('div');
+      card.className = 'card col-md-4 mb-3';
+
+      const image = document.createElement('img');
+      image.className = 'card-img-top';
+      image.src = profile.photo;
+      image.alt = profile.name;
+
+      const cardBody = document.createElement('div');
+      cardBody.className = 'card-body';
+
+      const name = document.createElement('h5');
+      name.className = 'card-title';
+      name.textContent = profile.name;
+
+      const phoneNumber = document.createElement('p');
+      phoneNumber.className = 'card-text';
+      phoneNumber.textContent = `Phone: ${profile.phoneNumber}`;
+
+      const deleteButton = document.createElement('button');
+      deleteButton.className = 'btn btn-danger';
+      deleteButton.textContent = 'Delete';
+      deleteButton.addEventListener('click', () => {
+        deleteProfile(profile.id);
+      });
+
+      cardBody.appendChild(name);
+      cardBody.appendChild(phoneNumber);
+      cardBody.appendChild(deleteButton);
+
+      card.appendChild(image);
+      card.appendChild(cardBody);
+
+      return card;
+    }
+
+    fetchProfiles();
+  </script> -->
+</body>
+
+</html>
