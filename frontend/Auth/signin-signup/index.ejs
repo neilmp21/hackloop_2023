@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- ===== CSS ===== -->
+        <link rel="stylesheet" href="signin.css">
+    
+        <!-- ===== BOX ICONS ===== -->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <title>Responsive Login Form Sign In Sign Up</title>
+    </head>
+    <body>
+
+
+        <% if( success && success.length){ %>
+        
+            <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
+                <%= success %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        
+            <% } %>
+                <% if( error &&error.length){ %>
+        
+                    <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
+                        <%= error %>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+        
+                    <% } %>
+        <div class="login">
+            <div class="login__content">
+                <div class="login__img">
+                    <img src="/images/Mansplaining-rafiki.png" alt="">
+                </div>
+
+                <div class="login__forms">
+                    <form action="/login" method="post" class="login__registre" id="login-in">
+                        <h1 class="login__title">Sign In</h1>
+    
+                        <div class="login__box">
+                            <i class='bx bx-user login__icon'></i>
+                            <input type="text" placeholder="Username" name="username" class="login__input">
+                        </div>
+    
+                        <div class="login__box">
+                            <i class='bx bx-lock-alt login__icon'></i>
+                            <input type="password" placeholder="Password" name="password" class="login__input">
+                        </div>
+
+                        <a href="#" class="login__forgot">Forgot password?</a>
+
+                        <a href="" class="login__button" > <button type="submit">Sign In</button></a>
+
+                        <div>
+                            <span class="login__account">Don't have an Account ?</span>
+                            <span class="login__signin"  id="sign-up">Sign Up</span>
+                        </div>
+                    </form>
+
+                    <form action="/signup" method="post" class="login__create none" id="login-up">
+                        <h1 class="login__title">Create Account</h1>
+    
+                        <div class="login__box">
+                            <i class='bx bx-user login__icon'></i>
+                            <input type="text" placeholder="Username"  name="username" class="login__input">
+                        </div>
+    
+                        <div class="login__box">
+                            <i class='bx bx-at login__icon'></i>
+                            <input type="text" placeholder="Email" name= "email"  class="login__input">
+                        </div>
+
+                        <div class="login__box">
+                            <i class='bx bx-lock-alt login__icon'></i>
+                            <input type="password" placeholder="Password" name= "password"  class="login__input">
+                        </div>
+
+                        <a href="#" class="login__button"><button type="submit">Sign Up</button></a>
+
+                        <div>
+                            <span class="login__account">Already have an Account ?</span>
+                            <span class="login__signup" id="sign-in">Sign In</span>
+                        </div>
+
+                        <div class="login__social">
+                            <a href="#" class="login__social-icon"><i class='bx bxl-facebook' ></i></a>
+                            <a href="#" class="login__social-icon"><i class='bx bxl-twitter' ></i></a>
+                            <a href="#" class="login__social-icon"><i class='bx bxl-google' ></i></a>
+                        </div>
+                    </form>
+
+                  
+                </div>
+            </div>
+
+          
+        </div>
+
+        <section>
+            <div class="snows">
+                <img src="/images/snow.png" alt="">
+                <img src="/images/snow.png" alt="">
+                <img src="/images/snow.png" alt="">
+                <img src="/images/snow.png" alt="">
+                <img src="/images/snow.png" alt="">
+                <img src="/images/snow.png" alt="">
+                <img src="/images/snow.png" alt="">
+       
+                   </div>
+        </section>
+        <!--===== MAIN JS =====-->
+        <!-- <script src="./"></script> -->
+        <!-- <script src="/hackloop_2023/frontend/public/js/signin-signup.js"></script> -->
+        <script src="js/signin-signup.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    </body>
+</html>

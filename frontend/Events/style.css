@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-image: url("society.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+}
+
+.main {
+    color: wheat;
+    font-style: italic;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+label {
+    color: #9a078e;
+    font-style: oblique;
+    font-size: larger;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+
+#eventContainer {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: left;
+    border: 2px solid #e40707;
+    padding: 20px;
+    border-radius: 4F0px;
+    background-color: cornsilk;
+}
+
+#eventForm {
+    display: flex;
+    flex-direction: column;
+    gap: .5vw;
+
+}
+button {
+    margin-top: 2vw;
+    padding: 1vw;
+    border-radius: 50px;
+    background-color: plum;
+
+}
+
+
+input[type="text"],
+input[type="date"],
+input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+
+
+
+#imageUploadSpace {
+    border: 1px dashed #170000;
+    padding: 20px;
+    margin-bottom: 30px;
+
+}
+
+form {
+    margin-bottom: 20px;
+
+
+}
+
+#eventList {
+    max-width: 400px;
+    margin: 0vw auto;
+    text-align: left;
+}
+
+.eventItem {
+    margin-top: 2vw;
+    flex: 0 0 calc(33.33% - 20px);
+    border: 1px solid #ccc;
+    padding: 40px;
+    box-sizing: border-box;
+    background-color: rgb(223, 161, 138);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}

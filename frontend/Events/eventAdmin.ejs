@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Admin Page</title>
+    <link rel="stylesheet" href="/eventAdmin.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<!-- <style>
+    body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-image: url("society.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+}
+
+.main {
+    color: wheat;
+    font-style: italic;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+label {
+    color: #9a078e;
+    font-style: oblique;
+    font-size: larger;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+
+#eventContainer {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: left;
+    border: 2px solid #e40707;
+    padding: 20px;
+    border-radius: 4F0px;
+    background-color: cornsilk;
+}
+
+#eventForm {
+    display: flex;
+    flex-direction: column;
+    gap: .5vw;
+
+}
+
+button {
+    margin-top: 2vw;
+    padding: 1vw;
+    border-radius: 50px;
+    background-color: plum;
+
+}
+
+
+input[type="text"],
+input[type="date"],
+input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+
+
+
+#imageUploadSpace {
+    border: 1px dashed #170000;
+    padding: 20px;
+    margin-bottom: 30px;
+
+}
+
+form {
+    margin-bottom: 20px;
+
+
+}
+
+#eventList {
+    max-width: 400px;
+    margin: 0vw auto;
+    text-align: left;
+}
+
+.eventItem {
+    margin-top: 2vw;
+    flex: 0 0 calc(33.33% - 20px);
+    border: 1px solid #ccc;
+    padding: 40px;
+    box-sizing: border-box;
+    background-color: rgb(223, 161, 138);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+</style> -->
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Colony Management</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/event">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profile</a>
+                </li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </div>
+    </nav>
+
+    <h1 class="main">Event Admin Page</h1>
+    <div id="eventContainer">
+        <!-- <div id="imageUploadSpace">
+            <input type="file" id="img" required>
+            Upload IMAGE
+        </div> -->
+        <form id="eventForm" form action="/event" method="post">
+            <label for="eventName">Event Name:</label>
+            <input type="text" id="eventName" name="event[Name]" required>
+
+            <label for="eventDate">Event Date:</label>
+            <input type="date" id="eventDate"  name="event[date]" required>
+
+            <label for="eventDescprition">Event Description :</label>
+            <input type="text" id="eventDescprition" name="event[description]" required>
+
+            <label for="eventLocation">Event Location:</label>
+            <input type="text" id="eventLocation" name="event[location]"  required>
+            <button type="submit" onclick="addEvent()">Add Event</button>
+        </form>
+    </div>
+    <div id="eventList">
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
