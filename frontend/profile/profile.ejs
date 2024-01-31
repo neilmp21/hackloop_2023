@@ -228,12 +228,24 @@ margin:5% 3% 5% 0;
           <h2>Create Profile</h2>
           <form action="/createProfile" method="POST">
             <!-- Use "user[name]" format for the fields -->
-            <label for="user[username]">Username:</label>
-            <input type="text" id="user[username]" name="user[username]" required>
-      
-            <label for="user[email]">Email:</label>
-            <input type="email" id="user[email]" name="user[email]" required>
-      
+            
+            <% if (user) { %>
+              <label for="user[username]">Username:</label>
+              <input type="text" id="user[username]" value="<%=user.username  %>" name="user[username]" required>
+              
+              <label for="user[email]">Email:</label>
+              <input type="email" id="user[email]" name="user[email]" value="<%=user.email %>" required>
+             
+            <% } else { %>
+              <label for="user[username]">Username:</label>
+              <input type="text" id="user[username]"  name="user[username]" required>
+              
+              <label for="user[email]">Email:</label>
+              <input type="email" id="user[email]" name="user[email]" required>
+              <% } %>
+
+            
+           
             <label for=user[phoneNumber]>Phone Number:</label>
             <input type="tel" id="user[phoneNumber]" name="user[phoneNumber]" required>
       
