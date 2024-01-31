@@ -62,8 +62,7 @@ app.use(passport.initialize());
 app.use(passport.session()); //neseccary cookies for working of autho?!
 
 passport.use(new LocalStrategy({
-    usernameField: 'username',
-    passwordField: 'password'
+
 }, User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
@@ -100,19 +99,36 @@ async function main(){
 app.get("/login",(req,res)=>{
    res.render("Auth/signin-signup/index.ejs");
 });
-//     app.post("/login",saveRedirectUrl,passport.authenticate('local',
-// {
-//     successRedirect: "/",
-//     failureRedirect:"/login",
-//     failureFlash:true,
-//         }),
-// (req,res)=>{
-//     req.flash("success", "Welcome to the site!");
-//     let redirectUrl = res.locals.redirectUrl || "/";
-//     console.log(req.flash('success'));
-//     res.redirect(redirectUrl);
-    
-// }
+// app.post("/login",async (req,res)=>{
+//     try {
+//         let { username,password } = req.body;
+//         console.log(req.body);
+//         // let user = await  User.findOne({ where:{ username:username}});
+//         // if (bcrypt.compareSync(password, user.password)){
+//         //     req.login(registeredUser, (err) => {
+//         //         if (err) {
+//         //             return next(err);
+//         //         }
+
+//         //         req.flash("Success", "Welcome to Our colony!");
+//         //         res.redirect("/");
+
+//         //     });
+
+//         // }
+//         // let registeredUser = await User.register(newUser, password);
+//         // console.log(registeredUser);
+       
+
+
+//     }
+//     catch (e) {
+//         req.flash("error", e.message);
+//         // res.redirect("/signup")
+//         console.log(e);
+//     }
+
+//     }
 
 //  );
 //  app.post('/login', async (req, res, next) => {
@@ -170,7 +186,7 @@ app.get("/login",(req,res)=>{
     });
 
 
-app.post("/logout", (req, res, next) => {
+app.get("/logout", (req, res, next) => {
         req.logout((err) => {
             if (err) {
                 return next(err);
@@ -191,11 +207,11 @@ app.post("/logout", (req, res, next) => {
 
 app.get("/",(req,res)=>{
     console.log("welcome to home page");
-    
    req.flash('success',"welcome to home page") ;
-
+   const user = req.user;
     // console.log(req.flash('success'));
-    res.render('home.ejs');
+    console.log(user);
+    res.render('home.ejs',{user});
 })    
 
     app.post("/signup", wrapasync(async (req, res) => {
@@ -206,13 +222,14 @@ app.get("/",(req,res)=>{
             let newUser = new User({ email: email, username: username });
             let registeredUser = await User.register(newUser, password);
             console.log(registeredUser);
-            req.login(registeredUser, (err) => {
+          req.login(registeredUser, async (err) => {
                 if (err) {
                     return next(err);
                 }
-
+               req.user = await User.findOne({ where: { username: username } });
                 req.flash("Success", "Welcome to Our colony!");
                 res.redirect("/");
+                
 
             });
            
@@ -286,12 +303,19 @@ app.delete("/event/:id",async(req,res)=>{
     });
 //get form to add profile
    app.get("/createProfile",(req,res)=>{
-    res.render("profile/profile.ejs");
+       const user = req.user;
+    console.log(user);
+    res.render("profile/profile.ejs",{user});
     })
 //adding data from form into db
 app.post('/createProfile',async (req, res) => {
-        
-        const newProfile = await User.create({...req.body.user});
+        const {userId} = req.body._id;
+        if(!UserId){
+            const newProfile = await User.create({ ...req.body.user });
+        }
+        else{
+        await User.findByIdAndUpdate(userId,{...req.body.user});
+        }
         console.log(newProfile);
         res.redirect('getProfiles');
     });
