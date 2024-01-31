@@ -310,12 +310,8 @@ app.delete("/event/:id",async(req,res)=>{
 //adding data from form into db
 app.post('/createProfile',async (req, res) => {
         const {userId} = req.body._id;
-        if(!UserId){
-            const newProfile = await User.create({ ...req.body.user });
-        }
-        else{
-        await User.findByIdAndUpdate(userId,{...req.body.user});
-        }
+            const newProfile = await User.create({ ...req.body.user });// better to have fingByIDAndUpdate()
+    
         console.log(newProfile);
         res.redirect('getProfiles');
     });
