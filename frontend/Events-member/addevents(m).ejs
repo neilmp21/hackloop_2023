@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Event</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Colony Management</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/event">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profile</a>
+                </li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </div>
+    </nav>
+    <h1>Add New Event</h1>
+
+    <form action="/event" method="post" >
+        <!-- Image Upload
+        <br>  -->
+        <!-- <label for="image">Event Image:</label>
+        <input type="file" name="event[image]" id="image" accept="image/*" required> -->
+             <br>
+        <!-- Event Name -->
+        <label for="name">Event Name:</label>
+        <input type="text" name="event[Name]" id="name" required>
+<br>
+        <!-- Event Date -->
+        <label for="date">Event Date:</label>
+        <input type="date" name="event[date]" id="date" required>
+<br>
+        <!-- Event Description -->
+        <label for="description">Event Description:</label>
+        <textarea name="event[description]" id="description" required></textarea>
+<br>
+        <!-- Event Location -->
+        <label for="location">Event Location:</label>
+        <input type="text" name="event[location]" id="location" required>
+<br>
+        <!-- Event Tags -->
+        <label for="tags">Event Tags (comma-separated):</label>
+        <input type="text" name="event[tags]" id="tags">
+<br>    
+        <!-- Submit Button -->
+        <button type="submit">Add Event</button>
+    </form>
+</body>
+
+</html>
