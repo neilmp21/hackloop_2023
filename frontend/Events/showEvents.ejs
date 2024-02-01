@@ -179,35 +179,43 @@ border-radius: 100%;
     </form>
    
 
-    <!-- Event Cards -->
-    <div class="card-deck">
-        <% events.forEach(event=> { %>
-            <div class="card">
-                <!-- Event Image (if available) -->
-                <% if (event.image) { %>
-                    <img src="<%= event.image  %>"
-                        class="card-img-top" alt="Event Image">
-                    <% } %>
+<!-- Event Cards -->
+<div class="card-deck">
+    <% events.forEach(event=> { %>
+        <div class="card">
+            <!-- Event Image (if available) -->
+            <% if (event.image) { %>
+                <img src="<%= event.image %>" class="card-img-top" alt="Event Image">
+            <% } %>
 
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <%= event.Name %>
-                            </h5>
-                            <p class="card-text">
-                                <%= event.description %>
-                            </p>
-                            <p class="card-text"><small class="text-muted">Event Date: <%= event.date.toDateString()
-                                        %></small></p>
-                            <p class="card-text"><small class="text-muted">Location: <%= event.location %></small>
-                            </p>
-                        </div>
-                        <form action="/event/<%= event.id %>?_method=DELETE" method="post">
-                        <button class="btn btn-dark " >
-                            Delete
-                        </button></form>
+            <div class="card-body">
+                <h5 class="card-title">
+                    <%= event.Name %>
+                </h5>
+                <p class="card-text">
+                    <%= event.description %>
+                </p>
+                <!-- Display Event Tags -->
+                <% if (event.tags && event.tags.length > 0) { %>
+                    <p class="card-text">
+                        <small class="text-muted">Tags: <%= event.tags.join(', ') %></small>
+                    </p>
+                <% } %>
+
+                <p class="card-text">
+                    <small class="text-muted">Event Date: <%= event.date.toDateString() %></small>
+                </p>
+                <p class="card-text">
+                    <small class="text-muted">Location: <%= event.location %></small>
+                </p>
             </div>
-            <% }); %>
-    </div>
+            <form action="/event/<%= event.id %>?_method=DELETE" method="post">
+                <button class="btn btn-dark">
+                    Delete
+                </button>
+            </form>
+        </div>
+    <% }); %>
 </div>
 
 
