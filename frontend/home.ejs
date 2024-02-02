@@ -6,192 +6,242 @@
   <title>Colony Management</title>
 
   <!-- Google fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat:ital@1&family=Sacramento&family=Ubuntu&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat:ital@1&family=Sacramento&family=Ubuntu&display=swap"
+    rel="stylesheet">
 
   <!-- CSS Stylesheet -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <link rel="stylesheet" href="frontend/css/home.css">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
- <!-- Bootstrap scripts -->
- 
- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
-<style>
-    body{
-
-font-family: 'Montserrat';
-}
-#title{
-background-color: #ff4c68;
-color:#fff;
-}
-.container-fluid{
-padding: 3% 15% 7%;
-}
-h1{
-font-family: 'Montserrat-Black', sans-serif;
-font-size: 3.5rem;
-line-height: 1.5;
-}
-h2{
-    font-family:" montserrat-bold";
-    font-size:3rem;
-    line-height: 3rem;
-
-}
-
-.card img{
-width:240px;
-height:240px;
-}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Bootstrap scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
 
 
+  <style>
+    body {
 
-/* Title  */
-.title-img{
-position: absolute;
-width:90%;
+      font-family: 'Montserrat';
+    }
 
-right:-4%;
-bottom: -10%;
-}
-.col-lg-6{
-position: relative;
-}
+    .navbar{
+     /* background-color: palegreen; */
+    margin-top: -2%;
 
-/* Features */
-#features{
-    position: relative;
-    z-index:1;
-    padding: 7% 15%;
-    background-color: #fff;
-   
-}
-h1{
-    font-size: 3.0rem;
-}
-h3{
-    font-family: "montserrat-bold";
-    font-size: 1.5rem;
-}
-p{
-    color:#8f8f8f;
-}
-.feature-box{
-    text-align: center;
-    padding: 5%;
- 
-}
-.peach{
-    color:#ef8172;
-    font-size: 40px;
-}
-.peach:hover{
-    color:#ff4c68;
-}
-/* Navigation Bar */
-.navbar{
-    padding: 0 0 4.5rem;
+    }
+    .row{
+      /* background-color: pink; */
+      margin-top: 5%;
+    }
+
+    #title {
+
+      background: linear-gradient(to right, #3498db, #2ecc71);
+
+      color: #fff;
+    }
+
+    .container-fluid {
+      padding: 3% 15% 16%;
+    }
+
+    h1 {
+      font-family: 'Montserrat-Black', sans-serif;
+      font-size: 3.5rem;
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-family: " montserrat-bold";
+      font-size: 3rem;
+      line-height: 3rem;
+
+    }
+
+    .card img {
+      width: 240px;
+      height: 240px;
+    }
+
     
- }
-.navbar-brand{
-font-family: "ubuntu";
-font-size: 2.0rem;
-font-weight: bold; 
-}
-.nav-item{
-padding: 0 18px;
-}
-.nav-link{
-font-size: 1.2rem;
-font-family: "montserrat-light";
-}
-/* Download Buttons */
-.download-button{
-margin:5% 3% 5% 0;
-}
-
-/* testimonials */
-#testimonials{
-text-align: center;
-background-color:#ef8172 ;
-color:white;
-}
-.padding{
-padding:7% 15%;
-
-}
-.testimonial-image{
-width:10%;
-border-radius: 100%;
-}
-#press{
-background-color:#ef8172;
-text-align: center;
-color:white;
-
-padding-bottom: 3%;
-}
-.press-logo{
-width:15%;
-margin:20px 20px 50px; 
-}
-
-/* Memories */
-#memories{
-text-align: center;
-padding: 100px;
-}
-
-@media (max-width:1028px){
-#title{
-    text-align: center;
-}
-.title-img{
-    position:static;
-    rotate:0deg;
-}
-}
-/* Call to Action  */
-#cta{
-    padding:7% 7% 7% 7%;
-   background-color: #ff4c68; 
-   text-align: center;
-}
-.issue{
-    width:40%;
-    margin:-4% auto 7%;
-    font-size:50px ;
-   color:#fff;
-   font-family: "Montserrat Black"; 
-}
-
-.acta-btn{
-   margin:auto 2% auto; 
-}
-.gcta-btn{
-    margin:auto 2% auto; 
- }
- /* Footer */
- #footer{
-    padding:4% 4% 4% 1%;
-    text-align: center;
- }
- .contact-f{
-    color:black;
- }
- .x{
-    margin:auto 0.5% auto; 
- }
 
 
-</style>
+
+    /* Title  */
+    .title-img {
+      position: absolute;
+      width: 90%;
+
+      right: -4%;
+      bottom: -10%;
+    }
+
+    .col-lg-6 {
+      position: relative;
+    }
+
+    /* Features */
+    #features {
+      position: relative;
+      z-index: 1;
+      padding: 7% 15%;
+      background-color: #fff;
+
+    }
+
+    h1 {
+      font-size: 3.0rem;
+    }
+
+    h3 {
+      font-family: "montserrat-bold";
+      font-size: 1.5rem;
+    }
+
+    p {
+      color: #8f8f8f;
+    }
+
+    .feature-box {
+      text-align: center;
+      padding: 5%;
+
+    }
+
+    .peach {
+      color: #ef8172;
+      font-size: 40px;
+    }
+
+    .peach:hover {
+      color: #ff4c68;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      padding: 0 0 4.5rem;
+
+    }
+
+    .navbar-brand {
+      font-family: "ubuntu";
+      font-size: 2.0rem;
+      font-weight: bold;
+    }
+
+    .nav-item {
+      padding: 0 18px;
+    }
+
+    .nav-link {
+      font-size: 1.2rem;
+      font-family: "montserrat-light";
+    }
+
+    /* Download Buttons */
+    .download-button {
+      margin: 5% 3% 5% 0;
+    }
+
+    /* testimonials */
+    #testimonials {
+      text-align: center;
+      background-color: #ef8172;
+      color: white;
+    }
+
+    .padding {
+      padding: 7% 15%;
+
+    }
+
+    .testimonial-image {
+      width: 10%;
+      border-radius: 100%;
+    }
+
+    #press {
+      background-color: #ef8172;
+      text-align: center;
+      color: white;
+
+      padding-bottom: 3%;
+    }
+
+    .press-logo {
+      width: 15%;
+      margin: 20px 20px 50px;
+    }
+
+    /* Memories */
+    #memories {
+      text-align: center;
+      padding: 100px;
+    }
+
+    @media (max-width:1028px) {
+      #title {
+        text-align: center;
+      }
+
+      .title-img {
+        position: static;
+        rotate: 0deg;
+      }
+    }
+
+    /* Call to Action  */
+    #cta {
+      padding: 7% 7% 7% 7%;
+      background-color: #ff4c68;
+      text-align: center;
+    }
+
+    .issue {
+      width: 40%;
+      margin: -4% auto 7%;
+      font-size: 50px;
+      color: #fff;
+      font-family: "Montserrat Black";
+    }
+
+    .acta-btn {
+      margin: auto 2% auto;
+    }
+
+    .gcta-btn {
+      margin: auto 2% auto;
+    }
+
+    /* Footer */
+    #footer {
+      padding: 4% 4% 4% 1%;
+      text-align: center;
+    }
+
+    .contact-f {
+      color: black;
+    }
+
+    .x {
+      margin: auto 0.5% auto;
+    }
+  </style>
 </head>
 
 <body>
@@ -199,69 +249,72 @@ padding: 100px;
   <section id="title">
     <div class="container-fluid">
 
-    <!-- Nav Bar -->
+      <!-- Nav Bar -->
 
-<nav class="navbar navbar-expand-lg navbar-dark ">
-  <a class="navbar-brand" href="#">MyCommunity</a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <ul class="navbar-nav ms-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/event">Events</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/createProfile">Profile</a>
-      </li>
-    <% if (!user) { %>
-      <li class="nav-item">
-        <a class="nav-link" href="/login">Login</a>
-      </li>
-      <% } else { %>
-        <li class="nav-item">
-          <a class="nav-link"  href="/logout">Logout</a>
-        </li>
-        <% } %>
+      <nav class="navbar navbar-expand-lg navbar-dark ">
+        <a class="navbar-brand" href="#">MyCommunity</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/event">Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/createProfile">Profile</a>
+            </li>
+            <% if (!user) { %>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+              </li>
+              <% } else { %>
+                <li class="nav-item">
+                  <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                <% } %>
 
-     
-    </ul>
-  </div>
 
-</nav>
+          </ul>
+        </div>
 
-  <!-- flash messages will be here -->
-  <% if( success && success.length){ %>
-  
-    <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
-      <%= success %>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  
-    <% } %>
-      <% if( error &&error.length){ %>
-  
-        <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
-          <%= error %>
+      </nav>
+
+      <!-- flash messages will be here -->
+      <% if( success && success.length){ %>
+
+        <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
+          <%= success %>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-  
+
         <% } %>
-    <!-- Title -->
-  <div class="row">
-    <div class="col-lg-6">
-      <h1>Welcome to MyCommunity, your community manager</h1>
-      <button class="btn btn-dark btn-lg download-button" type="button"><i class="fa fa-flag" aria-hidden="true"></i> Get Access</button>
-      <button class="btn btn-outline-light btn-lg download-button" type="button"><i class="fa fa-paper-plane" aria-hidden="true"></i> Join Now</button>
+          <% if( error &&error.length){ %>
+
+            <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
+              <%= error %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <% } %>
+              <!-- Title -->
+              <div class="row">
+                <div class="col-lg-6">
+                  <h1>Welcome to MyCommunity, your community manager</h1>
+                  <button class="btn btn-dark btn-lg download-button" type="button"><i class="fa fa-flag"
+                      aria-hidden="true"></i> Get Access</button>
+                  <button class="btn btn-outline-light btn-lg download-button" type="button"><i
+                      class="fa fa-paper-plane" aria-hidden="true"></i> Join Now</button>
+                </div>
+                <div class=" col-lg-6">
+                  <img class="title-img" src="/images/Community-bro.png" alt="iphone-mockup">
+                </div>
+              </div>
     </div>
-    <div class=" col-lg-6">
-      <img class="title-img" src="/images/Community-bro.png" alt="iphone-mockup">
-    </div>
-    </div>
-</div>
   </section>
 
 
@@ -269,24 +322,24 @@ padding: 100px;
 
   <section id="features">
     <div class="row">
-  <div class="col-lg-4 feature-box">
-    <h3><i class="fa-solid fa-circle-check peach"></i></h3>
-  <h3 >We note your issues.</h3>
-  <p>Here for you, supporting through every challenge you face.</p>
-  </div>
+      <div class="col-lg-4 feature-box">
+        <h3><i class="fa-solid fa-circle-check peach"></i></h3>
+        <h3>We note your issues.</h3>
+        <p>Here for you, supporting through every challenge you face.</p>
+      </div>
 
-  <div class="col-lg-4 feature-box">
-    <h3><i class="fa fa-credit-card-alt peach" aria-hidden="true"></i></h3>
-    <h3 >Maintenance Payment</h3>
-    <p>Financial stability thrives through consistent maintenance payments.</p>
-  </div>
+      <div class="col-lg-4 feature-box">
+        <h3><i class="fa fa-credit-card-alt peach" aria-hidden="true"></i></h3>
+        <h3>Maintenance Payment</h3>
+        <p>Financial stability thrives through consistent maintenance payments.</p>
+      </div>
 
-  <div class="col-lg-4 feature-box">
-    <h3><i class="fa fa-calendar peach" aria-hidden="true"></i></h3>
-    <h3 >Join our event.</h3>
-    <p>Join us for an unforgettable experience together.</p>
+      <div class="col-lg-4 feature-box">
+        <h3><i class="fa fa-calendar peach" aria-hidden="true"></i></h3>
+        <h3>Join our event.</h3>
+        <p>Join us for an unforgettable experience together.</p>
+      </div>
     </div>
-</div>
   </section>
 
 
@@ -296,30 +349,32 @@ padding: 100px;
 
     <div id="testimonial-carousel" class="carousel slide" data-ride="false">
 
-  <div class="carousel-inner">
+      <div class="carousel-inner">
 
-    <div class="padding carousel-item active">
-      <h2>Incredibly convenient! Streamlined maintenance payments and quick issue resolution make community living a breeze. Plus, the event invites keep us engaged and connected.</h2>
-    <img class="testimonial-image" src="/images/lady2.jpg" alt="lady-profile">
-    <em>Pebbles, New York</em>
-  </div>
+        <div class="padding carousel-item active">
+          <h2>Incredibly convenient! Streamlined maintenance payments and quick issue resolution make community living a
+            breeze. Plus, the event invites keep us engaged and connected.</h2>
+          <img class="testimonial-image" src="/images/lady2.jpg" alt="lady-profile">
+          <em>Pebbles, New York</em>
+        </div>
 
-    <div class="padding carousel-item testim">
-       <h2 class="testimonial-text">Love this webapp! Effortless maintenance payments, responsive issue resolution, and event invitations add a sense of community to our neighborhood. A must-have for seamless living.</h2>
-    <img class="testimonial-image" src="/images/lady-img.jpg" alt="lady-profile">
-    <em>Beverly, Illinois</em>
-   </div>
-    
-  </div>
-  <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" ></span>
-    
-  </a>
-  <a class="carousel-control-next" href="#testimonial-carousel" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" ></span>
-    
-  </a>
-</div>
+        <div class="padding carousel-item testim">
+          <h2 class="testimonial-text">Love this webapp! Effortless maintenance payments, responsive issue resolution,
+            and event invitations add a sense of community to our neighborhood. A must-have for seamless living.</h2>
+          <img class="testimonial-image" src="/images/lady-img.jpg" alt="lady-profile">
+          <em>Beverly, Illinois</em>
+        </div>
+
+      </div>
+      <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+
+      </a>
+      <a class="carousel-control-next" href="#testimonial-carousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+
+      </a>
+    </div>
 
 
   </section>
@@ -341,83 +396,86 @@ padding: 100px;
       <h2 class="text-center mb-4">Our Memories <i class="fa fa-heart pink" aria-hidden="true"></i></h2>
 
       <div class="row">
-          <!-- Image 1 -->
-          <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card">
-                  <img src="/images/cocktail party-cuate.png" class="card-img-top" alt="Image 1">
-                  <div class="card-body">
-                      <h5 class="card-title">Photo 1</h5>
-                      <p class="card-text">Details about Photo 1.</p>
-                  </div>
-              </div>
-          </div>
-
-          <!-- Image 2 -->
-          <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card">
-                  <img src="/images/Community-bro.png" class="card-img-top" alt="Image 2">
-                  <div class="card-body">
-                      <h5 class="card-title">Photo 2</h5>
-                      <p class="card-text">Details about Photo 2.</p>
-                  </div>
-              </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
-                <img src="/images/Halloween party-rafiki.png" class="card-img-top" alt="Image 2">
-                <div class="card-body">
-                    <h5 class="card-title">Photo 3</h5>
-                    <p class="card-text">Details about Photo 2.</p>
-                </div>
+        <!-- Image 1 -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <img src="/images/cocktail party-cuate.png" class="card-img-top" alt="Image 1">
+            <div class="card-body">
+              <h5 class="card-title">Photo 1</h5>
+              <p class="card-text">Details about Photo 1.</p>
             </div>
+          </div>
+        </div>
+
+        <!-- Image 2 -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <img src="/images/Community-bro.png" class="card-img-top" alt="Image 2">
+            <div class="card-body">
+              <h5 class="card-title">Photo 2</h5>
+              <p class="card-text">Details about Photo 2.</p>
+            </div>
+          </div>
         </div>
 
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="card">
-              <img src="/images/hippie party-cuate.png" class="card-img-top" alt="Image 2">
-              <div class="card-body">
-                  <h5 class="card-title">Photo 4</h5>
-                  <p class="card-text">Details about Photo 2.</p>
-              </div>
+            <img src="/images/Halloween party-rafiki.png" class="card-img-top" alt="Image 2">
+            <div class="card-body">
+              <h5 class="card-title">Photo 3</h5>
+              <p class="card-text">Details about Photo 2.</p>
+            </div>
           </div>
-      </div>
+        </div>
 
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <img src="/images/hippie party-cuate.png" class="card-img-top" alt="Image 2">
+            <div class="card-body">
+              <h5 class="card-title">Photo 4</h5>
+              <p class="card-text">Details about Photo 2.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
             <img src="/images/Outdoor party-amico.png" class="card-img-top" alt="Image 2">
             <div class="card-body">
-                <h5 class="card-title">Photo 5</h5>
-                <p class="card-text">Details about Photo 2.</p>
+              <h5 class="card-title">Photo 5</h5>
+              <p class="card-text">Details about Photo 2.</p>
             </div>
+          </div>
         </div>
-    </div>
 
-    <div class="col-lg-4 col-md-6 mb-4">
-      <div class="card">
-          <img src="/images/Community-bro.png" class="card-img-top" alt="Image 2">
-          <div class="card-body">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <img src="/images/Community-bro.png" class="card-img-top" alt="Image 2">
+            <div class="card-body">
               <h5 class="card-title">Photo 6</h5>
               <p class="card-text">Details about Photo 2.</p>
+            </div>
           </div>
-      </div>
-  </div>
+        </div>
 
-          <!-- Repeat the structure for the remaining images -->
+        <!-- Repeat the structure for the remaining images -->
 
       </div>
-  </div>
-</section>
+    </div>
+  </section>
 
 
   <!-- Call to Action -->
 
   <section id="cta">
 
-    <h3 class="issue">From  connectivity to  issue reporting, our features are designed to make apartment living more enjoyable!</h3>
-    <button class="btn btn-dark btn-lg acta-btn" type="button"><i class="fa fa-heart " aria-hidden="true"></i> Events</button>
+    <h3 class="issue">From connectivity to issue reporting, our features are designed to make apartment living more
+      enjoyable!</h3>
+    <button class="btn btn-dark btn-lg acta-btn" type="button"><i class="fa fa-heart " aria-hidden="true"></i>
+      Events</button>
 
-    <button class="btn btn-outline-light btn-lg gcta-btn" type="button"><i class="fa fa-credit-card-alt " aria-hidden="true"></i> Maintance</button>
+    <button class="btn btn-outline-light btn-lg gcta-btn" type="button"><i class="fa fa-credit-card-alt "
+        aria-hidden="true"></i> Maintance</button>
 
   </section>
 
@@ -425,17 +483,20 @@ padding: 100px;
   <!-- Footer -->
 
   <footer id="footer">
-<p class="contact-f"><i class="x fa-brands fa-twitter"></i><i class="x fa-brands fa-facebook-f"></i> <i class="x fa-brands fa-instagram"></i><i class="x fa-solid fa-envelope"></i></p>
+    <p class="contact-f"><i class="x fa-brands fa-twitter"></i><i class="x fa-brands fa-facebook-f"></i> <i
+        class="x fa-brands fa-instagram"></i><i class="x fa-solid fa-envelope"></i></p>
     <p>© Copyright ForumApp</p>
 
   </footer>
 
 
-<!-- Bootstrap JS and Popper.js (required for Bootstrap components) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <!-- Bootstrap JS and Popper.js (required for Bootstrap components) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
