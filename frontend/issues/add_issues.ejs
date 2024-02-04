@@ -34,7 +34,6 @@
         <br>
 
         <label for="createdBy">Created By:</label>
-        <!-- Assuming you have a list of users to select from -->
         <% if (user) { %>
         <input type="text" id="createdBy" name="createdBy" value="<%= user.id  %>">
         <% } else { %>
@@ -44,9 +43,9 @@
     
         <br>
 
-        <!-- <label for="image">Image:</label>
+         <label for="image">Image:</label>
         <input type="file" id="image" name="image" accept="image/*">
-        <br> -->
+        <br>
 
         <button type="submit">Submit</button>
     </form>
