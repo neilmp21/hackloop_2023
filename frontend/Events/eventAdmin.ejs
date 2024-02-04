@@ -118,12 +118,17 @@ label {
 }
 
 button {
+  color:white;
     margin-top: 2vw;
     padding: 1vw;
     border-radius: 4px;
-    background-color: #d9534f;
+    background-color: grey;
 
 }
+
+button:hover {
+    background-color: black;
+  }
 
 
 input[type="text"],
@@ -235,7 +240,7 @@ form {
                 <label for="eventDate">Event Date:</label>
                 <input type="date" id="eventDate"  name="event[date]" required>
     
-                <label for="eventDescprition">Event Description nnn:</label>
+                <label for="eventDescprition">Event Description :</label>
                 <input type="text" id="eventDescprition" name="event[description]" required>
     
                 <label for="eventLocation">Event Location:</label>

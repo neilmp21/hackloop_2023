@@ -211,6 +211,15 @@ img{
   transition: .3s;
 }
 
+button{
+  background-color: #ff4c68;
+  border:none !important;
+  color: white;
+}
+button:hover{
+  background-color: black;
+}
+
 .login__button:hover{
   background-color: black;
 }
