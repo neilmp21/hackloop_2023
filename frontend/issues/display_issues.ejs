@@ -1,124 +1,129 @@
+<!-- views/issues/display_issues.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Issue Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Issue Details</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat:ital@1&family=Sacramento&family=Ubuntu&display=swap"
+        rel="stylesheet">
+    
+    
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+<style>
+    body{
+        color:black
+    }
+</style>
 
 <body>
-
-    <nav  style=" margin-top: -2%;" class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
         <a class="navbar-brand" href="#">MyCommunity</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/issue">Issues</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="/event">Events &amp; Issues</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/createProfile">Profile</a>
                 </li>
-                <!-- Add more navigation links as needed -->
+                <% if (!user) { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <% } else { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                        <% } %>
+    
+    
             </ul>
         </div>
+    
     </nav>
-   
-    <div class="container mt-5">
-        <h1>Ongoing Issues</h1>
-        <% if (issues.length === 0) { %>
-            <h2>No Ongoing Issues :(</h2>
-        <% } %>
-        
-        <!-- Add Issue Button -->
-        <form method="get" action="/addissue">
-            <button class="btn btn-primary mb-3">Add Issue</button>
+
+
+    <div class="container mt-4">
+        <h1>Issue Details</h1>
+
+        <!-- Display Issue Details -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <%= issue.title %>
+                </h5>
+                <p class="card-text">
+                    <%= issue.description %>
+                </p>
+                <p class="card-text">Status: <%= issue.status %>
+                </p>
+                <p class="card-text">Created By: <%= user.username %>
+                </p>
+                <p class="card-text">Created At: <%= issue.createdAt %>
+                </p>
+                <p class="card-text">Upvotes: <%= issue.upvote %>
+                </p>
+                <!-- Add image display if needed -->
+                <% if (issue.image) { %>
+                    <img src="<%= issue.image %>" class="img-fluid" alt="Issue Image">
+                    <% } %>
+            </div>
+        </div>
+
+        <!-- Comment Section -->
+        <div class="mt-4">
+            <h3>Comments</h3>
+            <!-- Add your comment form if needed -->
+        <form action="/comments/<%= issue._id %>" method="post">
+            <!-- Add your comment form fields here -->
+            <div class="form-group">
+                <label for="comment">Comment:</label>
+                <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Comment</button>
         </form>
 
-        <!-- Issue Cards -->
-        <div class="card-deck">
-            <% issues.forEach(issue => { %>
-                <div class="card">
-                    <!-- Issue Image (if available) -->
-                    <% if (issue.image) { %>
-                        <img src="<%= issue.image %>"
-                            class="card-img-top" alt="Issue Image">
+            <!-- Display existing comments -->
+            <% if (issue.Comments && issue.Comments.length> 0) { %>
+                <ul class="list-group mt-3">
+                    <% issue.Comments.forEach(comment=> { %>
+                        <li class="list-group-item">
+                            <%= comment.comment %>
+                            <small> Commented By <%=comment.commentedBy %> </small>
+                            <form action="/comments/<%= comment.id %>/<%= issue._id %>?_method=PUT" method="post">
+                                <p>likes:<%=  comment.upvote %></p>
+                                <%= comment.id  %>
+                                <button style="position: absolute; right: 5rem;" class="btn-sm btn-dark right-2">
+                                    Upvote
+                                </button>
+                            </form>
+                        </li><br>
+                        
+                        <% }) %>
+                </ul>
+                <% } else { %>
+                    <p>No comments yet.</p>
                     <% } %>
-
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <%= issue.Title %>
-                        </h5>
-                        <p class="card-text">
-                            <%= issue.description %>
-                        </p>
-                        <p class="card-text"><small class="text-muted">Issue Date: <%= issue.date.toDateString()
-                                %></small></p>
-                        <p class="card-text"><small class="text-muted">Location: <%= issue.location %></small>
-                        </p>
-                    </div>
-                    
-                    <!-- Delete Button -->
-                    <form action="/issue/<%= issue.id %>?_method=DELETE" method="post">
-                        <button class="btn btn-dark">Delete</button>
-                    </form>
-                </div>
-            <% }); %>
-        </div>
-        
-        <hr>
-        
-        <h1>Resolved Issues</h1>
-        <% if (resolvedIssues.length === 0) { %>
-            <h2>No Resolved Issues :(</h2>
-        <% } %>
-        
-        <!-- Resolved Issue Cards -->
-        <div class="card-deck">
-            <% resolvedIssues.forEach(resolvedIssue => { %>
-                <div class="card">
-                    <!-- Resolved Issue Image (if available) -->
-                    <% if (resolvedIssue.image) { %>
-                        <img src="<%= resolvedIssue.image %>"
-                            class="card-img-top" alt="Resolved Issue Image">
-                    <% } %>
-
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <%= resolvedIssue.Title %>
-                        </h5>
-                        <p class="card-text">
-                            <%= resolvedIssue.description %>
-                        </p>
-                        <p class="card-text"><small class="text-muted">Resolved Date: <%= resolvedIssue.resolvedDate.toDateString()
-                                %></small></p>
-                        <p class="card-text"><small class="text-muted">Location: <%= resolvedIssue.location %></small>
-                        </p>
-                    </div>
-                    
-                    <!-- Delete Button (optional for resolved issues) -->
-                    <!-- <form action="/issue/<%= resolvedIssue.id %>?_method=DELETE" method="post">
-                        <button class="btn btn-dark">Delete</button>
-                    </form> -->
-                </div>
-            <% }); %>
         </div>
     </div>
 
-    <!-- Bootstrap JS and Popper.js (required for Bootstrap components) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>
