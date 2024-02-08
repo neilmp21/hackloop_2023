@@ -18,7 +18,7 @@ const passportLocalMongoose = require("passport-local-mongoose");
 // initializePassport(passport);
 
 
-
+ 
 //importing for working with mongoDB
 const mongoose = require('mongoose');
 const MONGO_URL = 'mongodb://127.0.0.1:27017/Hackloop';
@@ -67,16 +67,7 @@ app.use(passport.session()); //neseccary cookies for working of autho?!
 // passport.use(new LocalStrategy({
 
 // }, User.authenticate()));
-passport.use(new LocalStrategy(
-    function (username, password, done) {
-        User.findOne({ username: username }, function (err, user) {
-            if (err) { return done(err); }
-            if (!user) { return done(null, false); }
-            if (!user.verifyPassword(password)) { return done(null, false); }
-            return done(null, user);
-        });
-    }
-));
+passport.use(User.createStrategy());
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -95,24 +86,14 @@ async function main(){
 
 
 
-//authentification
-    initializePassport(passport,
-        async (email) => {
-            try {
-                const user = await User.findOne({ email });
-                return user;
-            } catch (error) {
-                console.error("Error finding user by email:", error);
-                throw error; // Handle the error as needed
-            }
-        });   
+
         
         
 
 app.get("/login",(req,res)=>{
    res.render("Auth/signin-signup/index.ejs");
 });
-
+//sign in problem is here...middleware - line 70
     app.post('/login',
         passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }),
         function async (req, res) {
@@ -197,25 +178,28 @@ console.log(req.curUser._id)}
             name: "Kush ka Birthday",
             description: "Bhai ka happy birthday",
             location: "Sabke dil me",
-            image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI6NoYGIhAmwbydE2LUX0jbjtKU_hFwQLtHQ&usqp=CAU"
+            image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI6NoYGIhAmwbydE2LUX0jbjtKU_hFwQLtHQ&usqp=CAU",
+            createdBy:"65bbc18bc14fa76e81326d6e"
         },
         {
             name: "Community Picnic",
             description: "Enjoy a day of fun and food with the community",
             location: "Local Park",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUWQg08FGpvKL61s7TwSAMXPY24LvV6Wl4xw&usqp=CAU"
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUWQg08FGpvKL61s7TwSAMXPY24LvV6Wl4xw&usqp=CAU",
+            createdBy: "65bbc18bc14fa76e81326d6e"
         },
         {
             name: "Monthly Meeting",
             description: "Discuss community matters and share updates",
             location: "Community Center",
+            createdBy: "65bbc18bc14fa76e81326d6e"
            
         }
         // Add more dummy events as needed
     ];
     //adding few dummy events
-       
-         const user = req.curUSer;
+         req.curUser= req.user;
+         const user = req.curUser;
         // console.log(req.flash('success'));
         if (user) {
             console.log(user._id);
@@ -233,8 +217,10 @@ console.log(req.curUser._id)}
 });
 
     app.get("/addevent", async (req, res) => {
+        req.curUser= req.user;
+        const user = req.curUser;
         
-        res.render("Events/eventAdmin.ejs")  //showing events
+        res.render("Events/eventAdmin.ejs",{user});  //showing events
     });
 
 
@@ -259,10 +245,13 @@ app.delete("/event/:id",async(req,res)=>{
     app.get('/getProfiles', async (req, res) => {//, isLoggedIn
         // const deleted = await User.deleteMany();
          const profiles =await User.find();
+        req.curUser = req.user;
+        const user = req.curUser;
+         
         //  console.log(profiles);
         //  console.log(deleted);
         
-         res.render("profile/getProfiles.ejs",{profiles});
+         res.render("profile/getProfiles.ejs",{profiles,user});// added admin visiblity
     });
 //get form to add profile
    app.get("/createProfile",(req,res)=>{
@@ -274,8 +263,9 @@ app.delete("/event/:id",async(req,res)=>{
 app.post('/createProfile',async (req, res) => {
     const { username, ...updatedFields } = req.body.user;
     const newProfile = await User.findOneAndUpdate({ username }, updatedFields, { new: true });
-    
+    //just updating not creting new
         console.log(newProfile);
+        console.log("hello")
         res.redirect("/getProfiles");
     });
 
@@ -287,19 +277,6 @@ app.post('/createProfile',async (req, res) => {
     })
 
 
-
-    app.delete('/deleteProfile/:id', (req, res) => {
-        // const profileId = parseInt(req.params.id);
-        // const index = profiles.findIndex(profile => profile.id === profileId);
-
-        // if (index !== -1) {
-        //     profiles.splice(index, 1);
-        //     res.json({ success: true });
-        // } else {
-        //     res.status(404).json({ success: false, message: 'Profile not found' });
-        // }
-    });
-
     //ISSUES
    
     // Index - show all issues
@@ -309,14 +286,14 @@ app.post('/createProfile',async (req, res) => {
     app.get('/issues/new', (req, res) => {
         req.curUser = req.user;
         const user=req.curUser;
-        console.log(user);
+        // console.log(user);
         res.render("issues/add_issues.ejs",{user});
     });
 
     // Create - add a new issue to the database
     app.post('/addIssue',  async (req, res) => { //isLoggedIn,
         try {
-            const { title, description, status, createdBy } = req.body;
+            const { title, description, status, createdBy } = req.body.issue;
             const newIssue = new Issues({ title, description, status, createdBy });
             const savedIssue = await newIssue.save();
             req.flash('success', 'Issue created successfully!');
@@ -336,6 +313,7 @@ app.post('/createProfile',async (req, res) => {
             console.log(createdBy);
             const user = await User.findById(createdBy);
             console.log("user found by is params",user);
+
 
             if (!issue) {
                 req.flash('error', 'Issue not found');
@@ -450,6 +428,16 @@ app.post('/createProfile',async (req, res) => {
         }
 
     });
+    //status changes
+    app.put("/Issues/status/:id",async(req,res)=>{
+        const {id}=req.params;
+        const {status} = req.body.issue;
+        const updated_Issue = await Issues.findByIdAndUpdate(id,{status});
+        console.log("Updated");
+        res.redirect(`/event`);
+
+
+    })
 
     // Delete - remove a specific issue from the database
     app.delete('/issue/:id', async (req, res) => { // isLoggedIn,
@@ -463,7 +451,21 @@ app.post('/createProfile',async (req, res) => {
             res.status(500).send('Internal Server Error');
         }
     });
+    app.use("/pre",(req,res)=>{
+        res.render("Auth/signin-signup/prior_login.ejs")
+    });
 
+    //changing userType
+   app.put("/MakeAdmin/:id", async(req,res)=>{
+    const {id} = req.params;
+      await User.findByIdAndUpdate(id,{ Type:"ADMIN" });
+      console.log("USer updated to Admin");
+   });
+    app.put("/MakeUser/:id", async (req, res) => {
+        const { id } = req.params;
+        await User.findByIdAndUpdate(id, { Type: "USER" });
+        console.log("USer updated to Admin");
+    })
     
 
 

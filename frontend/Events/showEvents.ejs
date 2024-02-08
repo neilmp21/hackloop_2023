@@ -234,11 +234,14 @@
                                 <p class="card-text"><small class="text-muted">Location: <%= event.location %></small>
                                 </p>
                               </div>
+                              <% if (user.Type=="ADMIN" || event.createdBy==user.id ) { %>
                               <form action="/event/<%= event.id %>?_method=DELETE" method="post">
-                                <button  style="margin-left: 30%; margin-bottom: 10%;" class="btn btn-dark "  >
+                                <button style="margin-left: 30%; margin-bottom: 10%;" class="btn btn-dark ">
                                   Delete event
                                 </button>
                               </form>
+                              <% } %>
+                              
                         </div>
                         <% }); %>
                     </div>
@@ -264,17 +267,44 @@
               
                         <div style="padding-bottom: 10%;" class="card-body">
                           <h5 class="card-title">
-                            <%= issue.title %>
+                            <%= issue.title %>  
+                            <% if (issue.status=="Open") { %>
+                            <b style="color: #ff4c68;">
+                              <%= issue.status %>
+                            </b>
+                            <% } %>
+                            <% if (issue.status=="In Progress") { %>
+                              <b style="color: orange;">
+                                <%= issue.status %>
+                              </b>
+                              <% } %>
+                              <% if (issue.status=="Resolved") { %>
+                                <b style="color: green;">
+                                  <%= issue.status %>
+                                </b>
+                                <% } %>
                           </h5>
                           <p class="card-text">
                             <%= issue.description %>  
                           </p>
                           <p class="card-text"><small class="text-muted">Event Date: <%= issue.createdAt %></small></p>
-                          <p><%= issue.id  %></p>
+                          <!-- <p><%= issue.id  %></p> -->
                           <p><%= issue.upvote  %> Upvotes</p>
                           
                           </p>
                         </div>
+                        <% if ( user.Type=="ADMIN" || issue.createdBy==user.id) { %>
+                        <form action="/Issues/status/<%= issue.id %>?_method=PUT" method="post">
+                          <label for="issueStatus">Update</label>
+                          <select id="issueStatus" name="issue[status]">
+                            <option value="Open">Open</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Resolved">Resolved</option>
+                          </select>
+                          <button type="submit" >Ok</button>
+                          <br>
+                        
+                            <% } %>
                         <form action="/Issues/upvote/<%= issue.id %>?_method=PUT" method="post">
                           <button style="margin-left: 30%; margin-bottom: 10%;" class="btn btn-dark ">
                             Upvote
@@ -285,7 +315,7 @@
                             Know more
                           </button>
                         </form>
-                        <% if ( !user) { %>
+                        <% if ( user.Type=="ADMIN" ||issue.createdBy == user.id) { %>
                           <form action="/issue/<%= issue.id %>?_method=DELETE" method="post">
                             <button style="margin-left: 30%; margin-bottom: 10%;" class="btn btn-dark ">
                               Delete Issue

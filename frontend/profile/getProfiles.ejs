@@ -236,6 +236,7 @@ form {
     <% } %>
 
     <div class="row">
+      
         
       <% profiles.forEach(profile => { %>
         <div class="card col-md-4 mb-3">
@@ -243,9 +244,27 @@ form {
           <div class="card-body">
             <h5 class="card-title"><%= profile.username %></h5>
             <p class="card-text">Phone: <%= profile.phoneNumber %></p>
+            <p>Designation : <%= profile.Type  %></p>
+            <% if (user.Type=="ADMIN") { %>
             <form action="/profile/<%=profile._id%>?_method=DELETE" method="post">
-                <button class="btn btn-danger" >Delete</button>
+              <button class="btn btn-danger">Delete</button>
             </form>
+            
+            <% if (profile.Type=="USER") { %>
+              <form action="/MakeAdmin/<%= profile._id %>  ?_method=PUT" method="post">
+                <button class="btn btn-danger">Make Admin</button>
+              </form>
+             
+            <% } %>
+          
+            <% if (profile.Type=="ADMIN") { %>
+            <form action="/MakeUser/<%= profile._id %>  ?_method=PUT" method="post">
+              <button class="btn btn-danger">Make User</button>
+            </form>
+            <% } %>
+            
+            <% } %>
+            
             
           </div>
         </div>

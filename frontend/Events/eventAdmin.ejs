@@ -246,6 +246,12 @@ form {
                 <label for="eventLocation">Event Location:</label>
                 <input type="text" id="eventLocation" name="event[location]"  required>
                 <button type="submit" onclick="addEvent()">Add Event</button>
+
+                <% if (user) { %>
+                  <input type="text" id="CreatedBy" name="event[createdBy]" disabled value="<%= user.id %>">
+                  <% } else { %>
+                    <input type="text" id="CreatedBy" name="event[createdBy]" value="">
+                    <% } %>
             </form>
         </div>
         <div id="eventList">

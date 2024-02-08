@@ -304,9 +304,9 @@ label {
 
     <!-- Container for Issues -->
     <div id="issueContainer">
-        <form id="issueForm" action="/issue" method="post">
+        <form id="issueForm" action="/addIssue" method="post">
             <label for="issueName">Issue Name :</label>
-            <input type="text" id="issueName" name="issue[Name]" required>
+            <input type="text" id="issueName" name="issue[title]" required>
 
             <label for="issueDescription">Issue Description :</label>
             <input type="text" id="issueDescription" name="issue[description]" required>
@@ -321,9 +321,9 @@ label {
 
             <label for="issueCreatedBy">Created By:</label>
             <% if (user) { %>
-            <input type="text" id="CreatedBy" name="createdBy" value="<%= user.id %>">
+            <input type="text" id="CreatedBy" name="issue[createdBy]" disabled value="<%= user.id %>">
             <% } else { %>
-            <input type="text" id="CreatedBy" name="createdBy" value="">
+            <input type="text" id="CreatedBy" name="issue[createdBy]" value="">
             <% } %>
             <br>
 

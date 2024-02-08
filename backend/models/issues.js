@@ -19,7 +19,7 @@ const IssueSchema = new Schema({
     createdBy: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        required: true,
+        // required: true,
     },
     createdAt: {
         type: Date,
@@ -27,7 +27,7 @@ const IssueSchema = new Schema({
     },
     image:{
         type:String,
-        required:null
+        required:false
     },
     upvote:{
         type:Number,

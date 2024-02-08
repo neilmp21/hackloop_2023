@@ -23,7 +23,12 @@ const EventSchema = new Schema({
     },
     location:{
         type:String,
-    }
+    },
+    createdBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+    },
 });
 
 module.exports = new mongoose.model("Event",EventSchema);

@@ -27,7 +27,11 @@ const UserSchema = new Schema({
     },
     phoneNumber: {
         type: String
-    },
+    }, 
+    Type:{
+        type:String,
+        default:"USER",
+    }
 });
 
 UserSchema.plugin(passportLocalMongoose);

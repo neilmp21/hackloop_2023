@@ -247,13 +247,13 @@ margin:5% 3% 5% 0;
             
            
             <label for=user[phoneNumber]>Phone Number:</label>
-            <input type="tel" id="user[phoneNumber]" name="user[phoneNumber]" required>
+            <input type="tel" id="user[phoneNumber]" name="user[phoneNumber]" value="<%=user.phoneNumber %>" required>
       
             <label for="user[dateOfBirth]">Date of Birth:</label>
-            <input type="date" id="user[dateOfBirth]" name="user[dateOfBirth]">
+            <input type="date" id="user[dateOfBirth]" name="user[dateOfBirth]" value="<%= user.dateOfBirth  %>">
       
             <label for="user[bio]">Bio:</label>
-            <textarea id="user[bio]" name="user[bio]"></textarea>
+            <textarea id="user[bio]" name="user[bio]"><%= user.bio  %></textarea>
       
             <label for="user[profileImage]">Profile Image URL:</label>
             <input type="text" id="user[profileImage]" name="user[profileImage]">

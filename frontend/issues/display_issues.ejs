@@ -76,6 +76,18 @@
                 </p>
                 <p class="card-text">Upvotes: <%= issue.upvote %>
                 </p>
+                <% if ( user.Type=="ADMIN" || issue.createdBy==user.id) { %>
+                    <form action="/Issues/status/<%= issue.id %>?_method=PUT" method="post" id="status">
+                        <label for="issueStatus">Update</label>
+                        <select id="issueStatus" name="issue[status]">
+                            <option value="Open">Open</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Resolved">Resolved</option>
+                        </select>
+                        <button type="submit" form="status">Ok</button>
+                        <br>
+                
+                        <% } %>
                 <!-- Add image display if needed -->
                 <% if (issue.image) { %>
                     <img src="<%= issue.image %>" class="img-fluid" alt="Issue Image">
@@ -87,13 +99,13 @@
         <div class="mt-4">
             <h3>Comments</h3>
             <!-- Add your comment form if needed -->
-        <form action="/comments/<%= issue._id %>" method="post">
+        <form action="/comments/<%= issue._id %>" method="post" id="comment">
             <!-- Add your comment form fields here -->
             <div class="form-group">
                 <label for="comment">Comment:</label>
-                <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+                <textarea class="form-control" id="comment" name="comment" rows="3" ></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Add Comment</button>
+            <button type="submit" class="btn btn-primary" form="comment">Add Comment</button>
         </form>
 
             <!-- Display existing comments -->
