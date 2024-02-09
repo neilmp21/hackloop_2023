@@ -85,6 +85,7 @@
                             <option value="Resolved">Resolved</option>
                         </select>
                         <button type="submit" form="status">Ok</button>
+                        </form>
                         <br>
                 
                         <% } %>
@@ -99,13 +100,13 @@
         <div class="mt-4">
             <h3>Comments</h3>
             <!-- Add your comment form if needed -->
-        <form action="/comments/<%= issue._id %>" method="post" id="comment">
+        <form action="/comments/<%= issue._id %>?_method=POST" method="post" id="Comment">
             <!-- Add your comment form fields here -->
             <div class="form-group">
                 <label for="comment">Comment:</label>
                 <textarea class="form-control" id="comment" name="comment" rows="3" ></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" form="comment">Add Comment</button>
+            <button type="submit" class="btn btn-primary" form="Comment" >Add Comment</button>
         </form>
 
             <!-- Display existing comments -->
