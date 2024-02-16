@@ -40,7 +40,7 @@
     }
 
     #title {
-      background-color: #ff4c68;
+     background: linear-gradient(to right, #9b59b6, #e74c3c);
       color: #fff;
     }
 
@@ -306,12 +306,16 @@
                         
                             <% } %>
                         <form action="/Issues/upvote/<%= issue.id %>?_method=PUT" method="post">
-                          <button style="margin-left: 30%; margin-bottom: 10%;" class="btn btn-dark ">
+                          <button style="     margin-bottom: -3%;
+                          margin-top: -15%;
+                          margin-left: 31%;" class="btn btn-dark ">
                             Upvote
                           </button>
                         </form>
                         <form action="/Issues/<%= issue.id %>?_method=get" method="post">
-                          <button style="margin-left: 30%; margin-bottom: 10%;" class="btn btn-primary ">
+                          <button style="   margin-left: 28%;
+                          margin-bottom: 5%;
+                          margin-top: -1%;" class="btn btn-primary ">
                             Know more
                           </button>
                         </form>
