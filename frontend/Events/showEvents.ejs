@@ -295,6 +295,7 @@
                         </div>
                         <% if ( user.Type=="ADMIN" || issue.createdBy==user.id) { %>
                         <form action="/Issues/status/<%= issue.id %>?_method=PUT" method="post">
+                          
                           <label for="issueStatus">Update</label>
                           <select id="issueStatus" name="issue[status]">
                             <option value="Open">Open</option>
@@ -302,11 +303,13 @@
                             <option value="Resolved">Resolved</option>
                           </select>
                           <button type="submit" >Ok</button>
+                          </form>
                           <br>
                         
                             <% } %>
-                        <form action="/Issues/upvote/<%= issue.id %>?_method=PUT" method="post">
-                          <button style="margin-left: 30%; margin-bottom: 10%;" class="btn btn-dark ">
+                        <form action="/Issues/upvote/<%= issue.id %>?_method=PUT"  method="post">
+                          <input type="hidden" name="_method" value="PUT">
+                          <button style="margin-left: 30%; margin-bottom: 10%;" class="btn btn-dark" >
                             Upvote
                           </button>
                         </form>

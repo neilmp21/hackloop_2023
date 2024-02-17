@@ -33,6 +33,7 @@ const User = require('./models/profile.js')
 const Issues = require('./models/issues.js');
 const Comment = require('./models/comments.js');
 const Issue = require('./models/issues.js');
+const MaintenanceBill = require('./models/bill.js')
 
 
 //middlewares
@@ -456,16 +457,86 @@ app.post('/createProfile',async (req, res) => {
     });
 
     //changing userType
-   app.put("/MakeAdmin/:id", async(req,res)=>{
-    const {id} = req.params;
-      await User.findByIdAndUpdate(id,{ Type:"ADMIN" });
-      console.log("USer updated to Admin");
-   });
+   
+
+app.put("/MakeAdmin/:id", async (req, res) => {
+    const { id } = req.params;
+
+    // Check if id is a valid ObjectId
+    if (mongoose.Types.ObjectId.isValid(id)) {
+        try {
+            await User.findByIdAndUpdate(id, { Type: "ADMIN" }).populate();
+            req.flash("success", "User updated to Admin");
+            res.redirect("/getProfiles");
+        } catch (error) {
+            console.error("Error updating user to Admin: ", error);
+            req.flash("error", "Error updating user to Admin, please try again.");
+            res.redirect("/getProfiles");
+        }
+    } else {
+        // Handle invalid id format
+        console.error("Invalid ObjectId format");
+        req.flash("error", "Invalid ObjectId format");
+        res.redirect("/getProfiles");
+    }
+});
+
     app.put("/MakeUser/:id", async (req, res) => {
         const { id } = req.params;
-        await User.findByIdAndUpdate(id, { Type: "USER" });
-        console.log("USer updated to Admin");
+
+        // Check if id is a valid ObjectId
+        if (mongoose.Types.ObjectId.isValid(id)) {
+            try {
+                await User.findByIdAndUpdate(id, { Type: "USER" }).populate();
+                req.flash("success", "Admin updated to User");
+                res.redirect("/getProfiles");
+            } catch (error) {
+                console.error("Error updating admin to User: ", error);
+                req.flash("error", "Error updating admin to user, please try again.");
+                res.redirect("/getProfiles");
+            }
+        } else {
+            // Handle invalid id format
+            console.error("Invalid ObjectId format");
+            req.flash("error", "Invalid ObjectId format");
+            res.redirect("/getProfiles");
+        }
+    });
+
+
+    app.get('/maintainanceForm',(req,res)=>{
+        res.render("bills/form.ejs")
     })
+    app.get("/showMaintance",async(req,res)=>{
+        req.curUser=req.user;
+        user=req.curUser;
+         const all = await MaintenanceBill.find()
+         console.log(all)
+         res.render("bills/shhowbills.ejs",{all})
+
+    })
+    app.post('/addMaintenanceBill', async (req, res) => {
+        try {
+            const { billSubject, amount, dueDate } = req.body;
+
+            // Create a new MaintenanceBill instance
+            const newMaintenanceBill = new MaintenanceBill({
+                billSubject,
+                amount,
+                dueDate,
+            });
+
+            // Save the instance to the database
+            await newMaintenanceBill.save();
+
+            // Redirect or respond as needed
+            res.redirect('/'); // Redirect to home page, adjust as needed
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Internal Server Error');
+        }
+    });
+
     
 
 
