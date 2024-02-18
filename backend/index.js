@@ -327,18 +327,31 @@ app.post('/createProfile',async (req, res) => {
     });
 
     // Create - add a new issue to the database
-    app.post('/addIssue',  async (req, res) => { //isLoggedIn,
+    app.post('/addIssue', upload.array('uploadedImages', 10), async (req, res) => {
         try {
             const { title, description, status, createdBy } = req.body.issue;
-            const newIssue = new Issues({ title, description, status, createdBy });
+
+            // Extract filenames from req.files
+            const imageFilenames = req.files.map(file => file.filename);
+
+            // Create a new issue with the extracted filenames
+            const newIssue = new Issue({
+                title,
+                description,
+                status,
+                createdBy,
+                images: imageFilenames,
+            });
+
             const savedIssue = await newIssue.save();
             req.flash('success', 'Issue created successfully!');
             res.redirect('/event');
         } catch (error) {
-            console.error('Error creating issue:', error.message);
+            console.error('Error creating issue:', error);
             res.status(500).send('Internal Server Error');
         }
     });
+
 
     // Show - display details of a specific issue
     app.get('/issues/:id', async (req, res) => { // isLoggedIn,
