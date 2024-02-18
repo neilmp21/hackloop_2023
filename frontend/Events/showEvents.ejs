@@ -219,7 +219,8 @@
                         <div class="card">
                           <!-- Event Image (if available) -->
                           <% if (event.image) { %>
-                            <img src="<%= event.image  %>" class="card-img-top" alt="Event Image">
+                            <!-- <img src="<%= //event.image  %>" class="card-img-top" alt="Event Image"> -->
+                            <img src="/images/<%= event.image  %>" alt="trying some multer images">
                             <% } %>
 
                               <div style="padding-bottom: 10%;" class="card-body">
@@ -234,7 +235,7 @@
                                 <p class="card-text"><small class="text-muted">Location: <%= event.location %></small>
                                 </p>
                               </div>
-                              <% if (user.Type=="ADMIN" || event.createdBy==user.id ) { %>
+                              <% if (  event.createdBy==user.id  || user.Type=="ADMIN") { %>
                               <form action="/event/<%= event.id %>?_method=DELETE" method="post">
                                 <button style="margin-left: 30%; margin-bottom: 10%;" class="btn btn-dark ">
                                   Delete event

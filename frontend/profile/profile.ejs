@@ -256,7 +256,8 @@ margin:5% 3% 5% 0;
             <textarea id="user[bio]" name="user[bio]"><%= user.bio  %></textarea>
       
             <label for="user[profileImage]">Profile Image URL:</label>
-            <input type="text" id="user[profileImage]" name="user[profileImage]">
+            <input type="text" id="user[profileImage]" name="user[profileImage]" value="<%= user.
+            profileImage  %>">
       
             <button type="submit">Create Profile</button>
           </form>

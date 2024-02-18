@@ -229,11 +229,13 @@ form {
 
        
         <div id="eventContainer">
-            <!-- <div id="imageUploadSpace">
-                <input type="file" id="img" required>
-                Upload IMAGE
-            </div> -->
-            <form id="eventForm" form action="/event" method="post">
+            
+            <form id="eventForm" form action="/event" method="post"  enctype="multipart/form-data">
+
+                <div id="imageUploadSpace">
+                  <input type="file" id="img" name="image" required>
+                  Upload IMAGE
+                </div>
                 <label for="eventName">Event Name :</label>
                 <input type="text" id="eventName" name="event[Name]" required>
     
@@ -247,11 +249,9 @@ form {
                 <input type="text" id="eventLocation" name="event[location]"  required>
                 <button type="submit" onclick="addEvent()">Add Event</button>
 
-                <% if (user) { %>
-                  <input type="text" id="CreatedBy" name="event[createdBy]" disabled value="<%= user.id %>">
-                  <% } else { %>
-                    <input type="text" id="CreatedBy" name="event[createdBy]" value="">
-                    <% } %>
+                
+                  <input type="text" id="CreatedBy" name="event[createdBy]"  value="<%= user.id %>" required>
+                 
             </form>
         </div>
         <div id="eventList">
