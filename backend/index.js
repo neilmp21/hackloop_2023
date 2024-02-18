@@ -14,7 +14,26 @@ const passport =require('passport')
 const wrapasync = require('./utils/wrapAsync.js')
 const LocalStrategy = require('passport-local').Strategy;
 const passportLocalMongoose = require("passport-local-mongoose");
+const fs = require('fs');
 
+//image upload
+const multer = require("multer");
+
+const storagey = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, '../frontend/public/images')
+    },
+    filename: function (req, file, cb) {
+    
+        cb(null, Date.now()+"--"+ file.originalname);
+    },
+})
+const upload = multer({ storage: storagey });
+
+app.post("/single",upload.single('image'),(req,res)=>{ //image upload demo
+    console.log(req.file);
+res.send("image uploaded succesfully")
+})
 // initializePassport(passport);
 
 
@@ -24,8 +43,7 @@ const mongoose = require('mongoose');
 const MONGO_URL = 'mongodb://127.0.0.1:27017/Hackloop';
 main().then(() => { console.log("connected to DB") }).catch(err => console.log(err));
 //uploading image
-const multer = require('multer');
-const upload = multer;
+
 
 //importing models
 const Event = require('./models/event.js')
@@ -225,14 +243,31 @@ console.log(req.curUser._id)}
     });
 
 
-app.post('/event',isLoggedIn,async(req,res)=>{
-    // const {data}= req.body.event; //pass fields as objects from form eg event[name]
-    const newevent = await Event.create( {...req.body.event });
-    // console.log(createdEvents);
-    console.log(req.body.event);
-    res.redirect("/event");
+    app.post('/event', upload.single('image'), async (req, res) => {
+        // Extract the form data from req.body and req.file
+        console.log(req.file)
+        console.log(req.body);
+        
+        
+        const eventData = {
+            ...req.body.event,
+            image: req.file.filename // assuming you want to save the filename
+        };
 
-})
+        try {
+            // Create a new event using the extracted data
+            const newEvent = await Event.create(eventData);
+            console.log(newEvent);
+
+            // Redirect or send a response as needed
+            res.redirect("/event");
+        } catch (error) {
+            // Handle errors appropriately
+            console.error(error);
+            res.status(500).send("Internal Server Error");
+        }
+    });
+
 
 app.delete("/event/:id",async(req,res)=>{
     const {id}= req.params;
