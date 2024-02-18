@@ -79,7 +79,7 @@
                 </p>
                 <p class="card-text">Upvotes: <%= issue.upvote %>
                 </p>
-                <% if ( user.Type=="ADMIN" ) { %>         //|| issue.createdBy==user.id
+                <% if ( user.Type=="ADMIN" || issue.createdBy==user.id ) { %>        
                     <form action="/Issues/status/<%= issue.id %>?_method=PUT" method="post" id="status">
                         <label for="issueStatus">Update</label>
                         <select id="issueStatus" name="issue[status]">
@@ -93,9 +93,13 @@
                 
                         <% } %>
                 <!-- Add image display if needed -->
-                <% if (issue.image) { %>
-                    <img src="<%= issue.image %>" class="img-fluid" alt="Issue Image">
+                <% issue.images.forEach(image => { %>
+                <% if (true) { %>
+                    <img style="display: block; margin: auto;" src="/images/<%= image %>" class="img-fluid" width="300px" alt="Issue Image">
+                    <br>
                     <% } %>
+                <% }) %>
+                
             </div>
         </div>
 

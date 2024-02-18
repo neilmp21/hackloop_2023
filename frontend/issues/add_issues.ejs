@@ -304,7 +304,11 @@ label {
 
     <!-- Container for Issues -->
     <div id="issueContainer">
-        <form id="issueForm" action="/addIssue" method="post">
+        <form id="issueForm" action="/addIssue" method="post" enctype="multipart/form-data">
+            <div id="imageUploadSpace">
+                <input type="file" id="img" name="uploadedImages" required multiple>
+                Upload IMAGE
+            </div>
             <label for="issueName">Issue Name :</label>
             <input type="text" id="issueName" name="issue[title]" required>
 
@@ -321,7 +325,7 @@ label {
 
             <label for="issueCreatedBy">Created By:</label>
             <% if (user) { %>
-            <input type="text" id="CreatedBy" name="issue[createdBy]" disabled value="<%= user.id %>">
+            <input type="text" id="CreatedBy" name="issue[createdBy]" value="<%= user.id %>">
             <% } else { %>
             <input type="text" id="CreatedBy" name="issue[createdBy]" value="">
             <% } %>
