@@ -36,6 +36,25 @@ res.send("image uploaded succesfully")
 })
 // initializePassport(passport);
 
+//IMAGE DELETION
+
+// Function to delete an image
+const deleteImage = (imageName) => {
+    const imagePath = path.join(__dirname, 'path/to/your/uploads', imageName);
+
+    fs.unlink(imagePath, (err) => {
+        if (err) {
+            console.error(`Error deleting image: ${imageName}`, err);
+        } else {
+            console.log(`Image deleted successfully: ${imageName}`);
+        }
+    });
+};
+
+// Example usage:
+const imageNameToDelete = 'example.jpg';
+deleteImage(imageNameToDelete);
+
 
  
 //importing for working with mongoDB
@@ -500,6 +519,31 @@ app.post('/createProfile',async (req, res) => {
             res.status(500).send('Internal Server Error');
         }
     });
+    // app.delete('/issue/:id', async (req, res) => {
+    //     try {
+    //         const { id } = req.params;
+
+    //         // Fetch the issue from the database
+    //         const issue = await Issues.findById(id);
+
+    //         if (!issue) {
+    //             return res.status(404).json({ error: 'Issue not found' });
+    //         }
+
+    //         // Delete associated images
+    //         issue.images.forEach(deleteImage);
+
+    //         // Delete the issue from the database
+    //         await Issues.findByIdAndDelete(id);
+
+    //         req.flash('success', 'Issue deleted successfully!');
+    //         res.redirect('/event');
+    //     } catch (error) {
+    //         console.error('Error deleting issue:', error);
+    //         res.status(500).send('Internal Server Error');
+    //     }
+    // });
+
     app.use("/pre",(req,res)=>{
         res.render("Auth/signin-signup/prior_login.ejs")
     });

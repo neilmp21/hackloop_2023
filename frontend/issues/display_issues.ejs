@@ -71,7 +71,21 @@
                 <p class="card-text">
                     <%= issue.description %>
                 </p>
-                <p class="card-text">Status: <%= issue.status %>
+                <p class="card-text">Status: <% if (issue.status=="Open" ) { %>
+                    <b style="color: #ff4c68;">
+                        <%= issue.status %>
+                    </b>
+                    <% } %>
+                        <% if (issue.status=="In Progress" ) { %>
+                            <b style="color: orange;">
+                                <%= issue.status %>
+                            </b>
+                            <% } %>
+                                <% if (issue.status=="Resolved" ) { %>
+                                    <b style="color: green;">
+                                        <%= issue.status %>
+                                    </b>
+                                    <% } %>
                 </p>
                 <p class="card-text">Created By: <%= user.username %>
                 </p>
