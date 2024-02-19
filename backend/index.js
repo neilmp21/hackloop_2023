@@ -382,12 +382,14 @@ app.post('/createProfile',async (req, res) => {
             const user = await User.findById(createdBy);
             console.log("user found by is params",user);
 
-
+          req.curUser= req.user;
+         const curuser=req.curUser
+         console.log(curuser);
             if (!issue) {
                 req.flash('error', 'Issue not found');
                 return res.redirect('/issues');
             }
-            res.render('issues/display_issues.ejs', { issue,user });
+            res.render('issues/display_issues.ejs', { issue,user,curuser });
         } catch (error) {
             console.error('Error fetching issue details:', error);
             res.status(500).send('Internal Server Error');
