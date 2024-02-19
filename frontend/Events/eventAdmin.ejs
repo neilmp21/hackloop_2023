@@ -6,178 +6,223 @@
   <title>Colony Management</title>
 
   <!-- Google fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat:ital@1&family=Sacramento&family=Ubuntu&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat:ital@1&family=Sacramento&family=Ubuntu&display=swap"
+    rel="stylesheet">
 
   <!-- CSS Stylesheet -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <link rel="stylesheet" href="frontend/css/home.css">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
- <!-- Bootstrap scripts -->
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Bootstrap scripts -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-<style>
-    body{
+  <style>
+    body {
 
-font-family: 'Montserrat';
-}
-#title{
-background-color: #ff4c68;
-color:#fff;
-}
-.container-fluid{
-padding: 3% 15% 7%;
-}
-h1{
-font-family: 'Montserrat-Black', sans-serif;
-font-size: 3.5rem;
-line-height: 1.5;
-}
-h2{
-    font-family:" montserrat-bold";
-    font-size:3rem;
-    line-height: 3rem;
+      background-color: #ff4c68;
+      font-family: 'Montserrat';
+    }
 
-}
+    #title {
+      color: #fff;
+    }
 
-.card img{
-width:auto;
-height:240px;
-}
+    .container-fluid {
+      padding: 3% 15% 7%;
+    }
 
+    h1 {
+      font-family: 'Montserrat-Black', sans-serif;
+      font-size: 3.5rem;
+      line-height: 1.5;
+    }
 
-h1{
-    font-size: 3.0rem;
-}
-h3{
-    font-family: "montserrat-bold";
-    font-size: 1.5rem;
-}
-p{
-    color:#8f8f8f;
-}
+    h2 {
+      font-family: " montserrat-bold";
+      font-size: 3rem;
+      line-height: 3rem;
 
-/* Navigation Bar */
-.navbar{
-    padding: 0 0 4.5rem;
-    
- }
-.navbar-brand{
-font-family: "ubuntu";
-font-size: 2.0rem;
-font-weight: bold; 
-}
-.nav-item{
-padding: 0 18px;
-}
-.nav-link{
-font-size: 1.2rem;
-font-family: "montserrat-light";
-}
-/* Download Buttons */
-.download-button{
-margin:5% 3% 5% 0;
-}
+    }
 
-.main {
-    color: wheat;
-    font-style: italic;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-
-}
-
-label {
-    color: white;
-    font-style: oblique;
-    font-size: larger;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
-}
+    .card img {
+      width: auto;
+      height: 240px;
+    }
 
 
-#eventContainer {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: left;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #333;
-}
+    h1 {
+      font-size: 3.0rem;
+    }
 
-#eventForm {
-    display: flex;
-    flex-direction: column;
-    gap: .5vw;
+    h3 {
+      font-family: "montserrat-bold";
+      font-size: 1.5rem;
+    }
 
-}
+    p {
+      color: #8f8f8f;
+    }
 
-button {
-  color:white;
-    margin-top: 2vw;
-    padding: 1vw;
-    border-radius: 4px;
-    background-color: grey;
+    /* Navigation Bar */
+    .navbar {
+      padding: 0 0 4.5rem;
 
-}
+    }
 
-button:hover {
-    background-color: black;
-  }
+    .navbar-brand {
+      font-family: "ubuntu";
+      font-size: 2.0rem;
+      font-weight: bold;
+    }
+
+    .nav-item {
+      padding: 0 18px;
+    }
+
+    .nav-link {
+      font-size: 1.2rem;
+      font-family: "montserrat-light";
+    }
+
+    /* Download Buttons */
+    .download-button {
+      margin: 5% 3% 5% 0;
+    }
+
+    .main {
+      color: wheat;
+      font-style: italic;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    }
+
+    label {
+      color: white;
+      font-style: oblique;
+      font-size: larger;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+    }
 
 
-input[type="text"],
-input[type="date"],
-input[type="file"] {
-    width: 100%;
-    padding: 8px;
-    margin: 5px 0;
-    box-sizing: border-box;
-    background-color:#ddd ;
-}
+    #eventContainer {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+      padding: 20px;
+      border-radius: 030px;
+      background-color: #333;
+    }
+
+    #eventForm {
+      display: flex;
+      flex-direction: column;
+      gap: .5vw;
+
+    }
+
+    button {
+      color: white;
+      margin-top: 2vw;
+      padding: 1vw;
+      border-radius: 4px;
+      background-color: grey;
+
+    }
+
+    button:hover {
+      background-color: black;
+    }
 
 
-
-#imageUploadSpace {
-    border: 1px dashed #170000;
-    padding: 20px;
-    margin-bottom: 30px;
-
-}
-
-form {
-    margin-bottom: 20px;
-
-
-}
-
-#eventList {
-    max-width: 400px;
-    margin: 0vw auto;
-    text-align: left;
-}
-
-.eventItem {
-    margin-top: 2vw;
-    flex: 0 0 calc(33.33% - 20px);
-    border: 1px solid #ccc;
-    padding: 40px;
-    box-sizing: border-box;
-    background-color: black;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
-
- 
+    input[type="text"],
+    input[type="date"],
+    input[type="file"] {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+      box-sizing: border-box;
+      background-color: #ddd;
+    }
 
 
 
-</style>
+    #imageUploadSpace {
+      border: 1px dashed #170000;
+      padding: 20px;
+      margin-bottom: 30px;
+
+    }
+
+    form {
+      margin-bottom: 20px;
+
+
+    }
+
+    #eventList {
+      max-width: 400px;
+      margin: 0vw auto;
+      text-align: left;
+    }
+
+    .eventItem {
+      margin-top: 2vw;
+      flex: 0 0 calc(33.33% - 20px);
+      border: 1px solid #ccc;
+      padding: 40px;
+      box-sizing: border-box;
+      background-color: black;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    @media (max-width:1028px) {
+      #eventContainer {
+        position: relative;
+        top: 25vw;
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: left;
+        padding: 25px;
+        border-radius: 8px;
+        background-color: #333;
+        border-radius: 50px;
+      }
+
+      .navbar {
+        margin-top: 5%;
+
+      }
+
+
+      label {
+        font-size: 2.5rem;
+      }
+
+      .navbar-brand {
+        font-size: 2.5rem;
+      }
+
+    }
+  </style>
 </head>
 
 <body>
@@ -185,89 +230,90 @@ form {
   <section id="title">
     <div class="container-fluid">
 
-    <!-- Nav Bar -->
+      <!-- Nav Bar -->
 
-<nav style=" margin-top: -2%;" class="navbar navbar-expand-lg navbar-dark ">
-  <a class="navbar-brand" href="#">MyCommunity</a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ms-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/event">Events</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/createProfile">Profile</a>
-      </li>
-    </ul>
-  </div>
+      <nav class="navbar navbar-expand-lg navbar-dark ">
+        <a class="navbar-brand" href="#">MyCommunity</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/event">Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/createProfile">Profile</a>
+            </li>
+          </ul>
+        </div>
 
-</nav>
+      </nav>
 
-  <!-- flash messages will be here -->
-  <% if( success && success.length){ %>
-  
-    <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
-      <%= success %>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  
-    <% } %>
-      <% if( error &&error.length){ %>
-  
-        <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
-          <%= error %>
+      <!-- flash messages will be here -->
+      <% if( success && success.length){ %>
+
+        <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
+          <%= success %>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-  
+
         <% } %>
+          <% if( error &&error.length){ %>
 
+            <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
+              <%= error %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
 
-       
-        <div id="eventContainer">
-            
-            <form id="eventForm" form action="/event" method="post"  enctype="multipart/form-data">
-
-                <div id="imageUploadSpace">
-                  <input type="file" id="img" name="image" required>
-                  Upload IMAGE
-                </div>
-                <label for="eventName">Event Name :</label>
-                <input type="text" id="eventName" name="event[Name]" required>
-    
-                <label for="eventDate">Event Date:</label>
-                <input type="date" id="eventDate"  name="event[date]" required>
-    
-                <label for="eventDescprition">Event Description :</label>
-                <input type="text" id="eventDescprition" name="event[description]" required>
-    
-                <label for="eventLocation">Event Location:</label>
-                <input type="text" id="eventLocation" name="event[location]"  required>
-                <button type="submit" onclick="addEvent()">Add Event</button>
-
-                
-                  <input type="text" id="CreatedBy" name="event[createdBy]"  value="<%= user.id %>" required>
-                 
-            </form>
-        </div>
-        <div id="eventList">
-    
-        </div>
-    
-        <script src="script.js"></script>
-
- 
+            <% } %>
 
 
 
-     <!-- Bootstrap JS and Popper.js (required for Bootstrap components) -->
-     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+              <div id="eventContainer">
+
+                <form id="eventForm" form action="/event" method="post" enctype="multipart/form-data">
+
+                  <div id="imageUploadSpace">
+                    <input type="file" id="img" name="image" required>
+                    Upload IMAGE
+                  </div>
+                  <label for="eventName">Event Name :</label>
+                  <input type="text" id="eventName" name="event[Name]" required>
+
+                  <label for="eventDate">Event Date:</label>
+                  <input type="date" id="eventDate" name="event[date]" required>
+
+                  <label for="eventDescprition">Event Description :</label>
+                  <input type="text" id="eventDescprition" name="event[description]" required>
+
+                  <label for="eventLocation">Event Location:</label>
+                  <input type="text" id="eventLocation" name="event[location]" required>
+                  <button type="submit" onclick="addEvent()">Add Event</button>
+
+
+                  <input type="text" id="CreatedBy" name="event[createdBy]" value="<%= user.id %>" required>
+
+                </form>
+              </div>
+              <div id="eventList">
+
+              </div>
+
+              <!-- <script src="script.js"></script> -->
+
+
+
+
+
+              <!-- Bootstrap JS and Popper.js (required for Bootstrap components) -->
+              <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+              <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+              <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
