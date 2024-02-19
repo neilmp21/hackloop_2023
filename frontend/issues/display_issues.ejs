@@ -397,13 +397,15 @@
             <% issue.Comments.forEach(comment => { %>
                 <li class="list-group-item">
                     <%= comment.comment %>
+                    <br>
                     <small> Commented By <%=comment.commentedBy %> </small>
                     <form action="/comments/<%= comment.id %>/<%= issue._id %>?_method=PUT" method="post">
                         <p><i class="fa fa-thumbs-up"></i> : <%=  comment.upvote %></p>
-                        <%= comment.id  %>
+                        
                         <button style="position: absolute; right: 5rem;" class="btn-sm btn-dark right-2">
                             Upvote
                         </button>
+                        <br>
                     </form>
                 </li><br>
             <% }) %>
