@@ -87,8 +87,15 @@
                                     </b>
                                     <% } %>
                 </p>
-                <p class="card-text">Created By: <%= user.username %>
+                <% if (user.username) { %>
+                <p class="card-text">Created By: <%= user.username %></p>
+                <% } %>
+                <% if (!user.username) { %>
+                <p class="card-text">Created By: user deleted
                 </p>
+                <% } %>
+                
+                
                 <p class="card-text">Created At: <%= issue.createdAt %>
                 </p>
                 <p class="card-text">Upvotes: <%= issue.upvote %>
