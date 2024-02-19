@@ -27,3 +27,8 @@ pending feature
   4. connect ur mongoDB, change MONGO_URL = 'mongodb://127.0.0.1:27017/Hackloop(ur db name)' in index.js
   5. npm i
   6. http://localhost:3001/
+
+
+
+# mongolink 
+ mongodb+srv://kush:nnm22is077@cluster0.ug1qw6w.mongodb.net/
