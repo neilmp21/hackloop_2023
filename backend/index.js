@@ -52,8 +52,7 @@ const deleteImage = (imageName) => {
 };
 
 // Example usage:
-const imageNameToDelete = 'example.jpg';
-deleteImage(imageNameToDelete);
+
 
 
  
