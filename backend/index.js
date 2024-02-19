@@ -58,8 +58,8 @@ const deleteImage = (imageName) => {
  
 //importing for working with mongoDB
 const mongoose = require('mongoose');
-// const MONGO_URL = 'mongodb://127.0.0.1:27017/Hackloop';
-const MONGO_URL ='mongodb+srv://kush:nnm22is077@cluster0.ug1qw6w.mongodb.net/'
+const MONGO_URL = 'mongodb://127.0.0.1:27017/Hackloop';
+// const MONGO_URL ='mongodb+srv://kush:nnm22is077@cluster0.ug1qw6w.mongodb.net/'
 main().then(() => { console.log("connected to DB") }).catch(err => console.log(err));
 //uploading image
 

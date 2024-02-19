@@ -8,7 +8,9 @@
   <!-- Google fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat:ital@1&family=Sacramento&family=Ubuntu&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat:ital@1&family=Sacramento&family=Ubuntu&display=swap"
+    rel="stylesheet">
 
   <!-- CSS Stylesheet -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -22,19 +24,21 @@
   <!-- Bootstrap scripts -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
     crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
     body {
       font-family: 'Montserrat';
-      background-color: #f8f9fa; /* Light gray background color */
+      background-color: #f8f9fa;
+      /* Light gray background color */
     }
 
     #title {
@@ -173,14 +177,16 @@
 
     /* Comment Section Styling */
     .mt-4 {
-      background-color: #fff; /* White background for comment section */
+      background-color: #fff;
+      /* White background for comment section */
       padding: 20px;
       border-radius: 8px;
       margin-top: 30px;
     }
 
     .mt-4 h3 {
-      color: #333; /* Dark color for comment section title */
+      color: #333;
+      /* Dark color for comment section title */
     }
 
     .form-group {
@@ -220,7 +226,6 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       position: relative;
     }
-
   </style>
 </head>
 
@@ -238,116 +243,28 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <ul class="navbar-nav ms-auto">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/event">Events &amp; Issues</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/createProfile">Profile</a>
+            </li>
+            <% if (!user) { %>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+              </li>
+              <% } else { %>
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+                  <a class="nav-link" href="/logout">Logout</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/event">Events &amp; Issues</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/createProfile">Profile</a>
-                </li>
-                <% if (!user) { %>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">Login</a>
-                    </li>
-                    <% } else { %>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/logout">Logout</a>
-                        </li>
-                        <% } %>
-    
-    
-            </ul>
-        </div>
-    
-    </nav>
-
-      <!-- flash messages will be here -->
-      <% if( success && success.length){ %>
-
-      <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
-        <%= success %>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-
-      <% } %>
-      <% if( error &&error.length){ %>
-
-      <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
-        <%= error %>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-
-      <% } %>
-
-
-    <div class="container mt-4">
-        <h2 style="color: black;">Issue Details</h2>
-        <h1>Issue Details</h1>
-
-        <!-- Display Issue Details -->
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">
-                    <%= issue.title %>
-                </h5>
-                <p class="card-text">
-                    <%= issue.description %>
-                </p>
-                <p class="card-text">Status: <% if (issue.status=="Open" ) { %>
-                    <b style="color: #ff4c68;">
-                        <%= issue.status %>
-                    </b>
-                    <% } %>
-                        <% if (issue.status=="In Progress" ) { %>
-                            <b style="color: orange;">
-                                <%= issue.status %>
-                            </b>
-                            <% } %>
-                                <% if (issue.status=="Resolved" ) { %>
-                                    <b style="color: green;">
-                                        <%= issue.status %>
-                                    </b>
-                                    <% } %>
-                </p>
-                <% if (user.username) { %>
-                <p class="card-text">Created By: <%= user.username %></p>
                 <% } %>
-                <% if (!user.username) { %>
-                <p class="card-text">Created By: user deleted
-                </p>
-                <% } %>
-                
-                
-                <p class="card-text">Created At: <%= issue.createdAt %>
-                </p>
-                <p class="card-text"><i class="fa fa-thumbs-up" style="font-size:24px"></i>
- :  <%= issue.upvote %>
-                </p> 
-                <% if (curuser.Type="ADMIN") { %>        
-                    <form action="/Issues/status/<%= issue.id %>?_method=PUT" method="post" id="status">
-                        <label for="issueStatus">Update</label>
-                        <select id="issueStatus" name="issue[status]">
-                            <option value="Open">Open</option>
-                            <option value="In Progress">In Progress</option>
-                            <option value="Resolved">Resolved</option>
-                        </select>
-                        <button type="submit" form="status">Ok</button>
-                        </form>
-                        <br>
-                
-                        <% } %>
-                <!-- Add image display if needed -->
-                <% issue.images.forEach(image => { %>
-                <% if (true) { %>
-                    <img style="display: block; margin: auto;" src="/images/<%= image %>" class="img-fluid" width="300px" alt="Issue Image">
-                    <br>
-                    <% } %>
-                <% }) %>
-                
-            </div>
+
+
+          </ul>
         </div>
 
       </nav>
@@ -355,70 +272,161 @@
       <!-- flash messages will be here -->
       <% if( success && success.length){ %>
 
-      <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
-        <%= success %>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-
-      <% } %>
-      <% if( error &&error.length){ %>
-
-      <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
-        <%= error %>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-
-      <% } %>
-
-
-    
-
-
-
-      <div id="issueList">
-        <!-- Display list of issues here if needed -->
-      </div>
-<!-- Comment Section -->
-<div class="mt-4">
-    <h3>Comments</h3>
-    <!-- Add your comment form if needed -->
-    <form action="/comments/<%= issue._id %>?_method=POST" method="post" id="Comment">
-        <!-- Add your comment form fields here -->
-        <div class="form-group">
-            <label for="comment">Comment:</label>
-            <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+        <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
+          <%= success %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        <button type="submit" class="btn btn-primary" form="Comment">Add Comment</button>
-    </form>
 
-    <!-- Display existing comments -->
-    <% if (issue.Comments && issue.Comments.length > 0) { %>
-        <ul class="list-group mt-3">
-            <% issue.Comments.forEach(comment => { %>
-                <li class="list-group-item">
-                    <%= comment.comment %>
-                    <br>
-                    <small> Commented By <%=comment.commentedBy %> </small>
-                    <form action="/comments/<%= comment.id %>/<%= issue._id %>?_method=PUT" method="post">
-                        <p><i class="fa fa-thumbs-up"></i> : <%=  comment.upvote %></p>
-                        
-                        <button style="position: absolute; right: 5rem;" class="btn-sm btn-dark right-2">
-                            Upvote
-                        </button>
-                        <br>
-                    </form>
-                </li><br>
-            <% }) %>
-        </ul>
-    <% } else { %>
-        <p>No comments yet.</p>
-    <% } %>
-</div>
+        <% } %>
+          <% if( error &&error.length){ %>
+
+            <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
+              <%= error %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <% } %>
 
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+              <div class="container mt-4">
+                <h2 style="color: black;">Issue Details</h2>
+                <h1>Issue Details</h1>
+
+                <!-- Display Issue Details -->
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <%= issue.title %>
+                    </h5>
+                    <p class="card-text">
+                      <%= issue.description %>
+                    </p>
+                    <p class="card-text">Status: <% if (issue.status=="Open" ) { %>
+                        <b style="color: #ff4c68;">
+                          <%= issue.status %>
+                        </b>
+                        <% } %>
+                          <% if (issue.status=="In Progress" ) { %>
+                            <b style="color: orange;">
+                              <%= issue.status %>
+                            </b>
+                            <% } %>
+                              <% if (issue.status=="Resolved" ) { %>
+                                <b style="color: green;">
+                                  <%= issue.status %>
+                                </b>
+                                <% } %>
+                    </p>
+                    <% if (user.username) { %>
+                      <p class="card-text">Created By: <%= user.username %>
+                      </p>
+                      <% } %>
+                        <% if (!user.username) { %>
+                          <p class="card-text">Created By: user deleted
+                          </p>
+                          <% } %>
+
+
+                            <p class="card-text">Created At: <%= issue.createdAt %>
+                            </p>
+                            <p class="card-text"><i class="fa fa-thumbs-up" style="font-size:24px"></i>
+                              : <%= issue.upvote %>
+                            </p>
+                            <% if (curuser.Type="ADMIN" ) { %>
+                              <form action="/Issues/status/<%= issue.id %>?_method=PUT" method="post" id="status">
+                                <label for="issueStatus">Update</label>
+                                <select id="issueStatus" name="issue[status]">
+                                  <option value="Open">Open</option>
+                                  <option value="In Progress">In Progress</option>
+                                  <option value="Resolved">Resolved</option>
+                                </select>
+                                <button type="submit" form="status">Ok</button>
+                              </form>
+                              <br>
+
+                              <% } %>
+                                <!-- Add image display if needed -->
+                                <% issue.images.forEach(image=> { %>
+                                  <% if (true) { %>
+                                    <img style="display: block; margin: auto;" src="/images/<%= image %>"
+                                      class="img-fluid" width="300px" alt="Issue Image">
+                                    <br>
+                                    <% } %>
+                                      <% }) %>
+
+                  </div>
+                </div>
+
+                </nav>
+
+                <!-- flash messages will be here -->
+                <% if( success && success.length){ %>
+
+                  <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
+                    <%= success %>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+
+                  <% } %>
+                    <% if( error &&error.length){ %>
+
+                      <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
+                        <%= error %>
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+
+                      <% } %>
+
+
+
+
+
+
+                        <div id="issueList">
+                          <!-- Display list of issues here if needed -->
+                        </div>
+                        <!-- Comment Section -->
+                        <div class="mt-4">
+                          <h3>Comments</h3>
+                          <!-- Add your comment form if needed -->
+                          <form action="/comments/<%= issue._id %>?_method=POST" method="post" id="Comment">
+                            <!-- Add your comment form fields here -->
+                            <div class="form-group">
+                              <label for="comment">Comment:</label>
+                              <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" form="Comment">Add Comment</button>
+                          </form>
+
+                          <!-- Display existing comments -->
+                          <% if (issue.Comments && issue.Comments.length> 0) { %>
+                            <ul class="list-group mt-3">
+                              <% issue.Comments.forEach(comment=> { %>
+                                <li class="list-group-item">
+                                  <%= comment.comment %>
+                                    <small> Commented By <%=comment.commentedBy %> </small>
+                                    <form action="/comments/<%= comment.id %>/<%= issue._id %>?_method=PUT"
+                                      method="post">
+                                      <p><i class="fa fa-thumbs-up"></i> : <%= comment.upvote %>
+                                      </p>
+                                      <%= comment.id %>
+                                        <button style="position: absolute; right: 5rem;"
+                                          class="btn-sm btn-dark right-2">
+                                          Upvote
+                                        </button>
+                                    </form>
+                                </li><br>
+                                <% }) %>
+                            </ul>
+                            <% } else { %>
+                              <p>No comments yet.</p>
+                              <% } %>
+                        </div>
+
+
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+                          integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+                          crossorigin="anonymous"></script>
 </body>
 
 </html>

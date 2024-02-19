@@ -364,10 +364,15 @@
 
                             <!-- Container for Issues -->
                             <div id="issueContainer">
-                                <form id="issueForm" action="/addIssue" method="post">
+                              
+                                    <form id="issueForm" action="/addIssue" method="post" enctype="multipart/form-data">
+                                        
                                     <label for="issueName">Issue Name :</label>
                                     <input type="text" id="issueName" name="issue[title]" required>
-
+<div id="imageUploadSpace">
+    <input type="file" id="img" name="uploadedImages" required multiple>
+    Upload IMAGE
+</div>
                                     <label for="issueDescription">Issue Description :</label>
                                     <input type="text" id="issueDescription" name="issue[description]" required>
 
