@@ -2,20 +2,22 @@
 Team weshowcode for hackloop 2023. 
 
 # folder [FrontEnd]
-  should have and take care of all the pages neseccary in the site
-  try to maintain the file position asper the shown structure of folders
+  .ejs files as pages are in thhis folder
+  static files are also in this directory
 
 # folder [backEnd]
    takes care of necessary schemas
    restful apis are present
-   # needed data for frontend are presnt in backend as js objects
+   using multer to taking in and storing images
    
-# things to figure out 
-  1. connecting js objects in backend to frontend react!
-  2. add styling....[.ejs files are same as .html]
-  3. what are the next features
-  4. 
+# features
+adding events
+creating issues and reacting to issues in the colony
+admin controls the activities in the colony sites
+payment option for monthly maintainance etc...
 
+pending feature
+ room selling option for society
 
 
 # how to work
