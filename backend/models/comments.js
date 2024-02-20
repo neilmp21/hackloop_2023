@@ -11,6 +11,12 @@ const commentSchema = new Schema({
         type:Number,
         default:0
     },
+    upvotedBy: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'User', // Assuming your user model is named 'User'
+        },
+    ],
     commentedBy:{
         type:String,
         default:"annonymous"

@@ -33,6 +33,10 @@ const IssueSchema = new Schema({
         type:Number,
         default:0
     },
+    upvotedBy: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    }],
     Comments:[
         {
             type: Schema.Types.ObjectId,

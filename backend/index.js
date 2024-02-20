@@ -454,31 +454,48 @@ app.post('/createProfile',async (req, res) => {
         }
     });
 
-    //comment upvote
-    app.put('/comments/:id/:iid', async (req, res) => {
-        const { id,iid } = req.params;
-        console.log(id);
-        console.log(iid);//issue id...used for redirecting
+   //comment upvote
+   
 
+    app.put('/comments/:id/:iid', async (req, res) => {
+        const { id, iid } = req.params;
+        // const userId = req.user._id; // Assuming you have user information in req.user
+        req.curUser=req.user;
+        const user = req.curUser;
+        const userId=user._id;
+        console.log("user id for comment");
+         console.log(userId);
+        console.log("user id for comment");
+
+        //  res.redirect(`/issues/${iid}`);
         try {
-            const comment = await Comment.findByIdAndUpdate(
-                id,
-                { $inc: { upvote: 1 } }, // Increment upvotes by 1
-                { new: true } // Return the updated document
-            );
+            const comment = await Comment.findById(id);
 
             if (!comment) {
                 req.flash('error', 'Comment not found');
-                return res.redirect('/issues'); // Redirect to appropriate page
+                return res.redirect(`/Issues/${iid}`);
             }
 
-            // Redirect to the issue details page or another appropriate page
-            res.redirect(`/Issues/${iid}`);
+            // Check if the current user has already upvoted
+            if (!comment.upvotedBy.includes(userId)) {
+                // Increment upvotes by 1
+                comment.upvote += 1;
+                // Add the user ID to the upvoters array
+                comment.upvotedBy.push(userId);
+                // Save the updated comment
+                await comment.save();
+
+                res.redirect(`/Issues/${iid}`);
+            } else {
+                req.flash('error', 'You have already upvoted this comment');
+                res.redirect(`/Issues/${iid}`);
+            }
         } catch (error) {
             console.error('Error updating upvotes for comment:', error);
             res.status(500).send('Internal Server Error');
         }
     });
+
 
 
     // Edit - show form to edit a specific issue
@@ -512,28 +529,62 @@ app.post('/createProfile',async (req, res) => {
     });
     //upvotes
     // Update - update a specific issue in the database
-    app.put('/issues/upvote/:id', async (req, res) => { // isLoggedIn,
+    // app.put('/issues/upvote/:id', async (req, res) => { // isLoggedIn,
+    //     const { id } = req.params;
+
+    //     try {
+    //         const issue = await Issues.findByIdAndUpdate(
+    //             id,
+    //             { $inc: { upvote: 1 } }, // Increment upvotes by 1
+    //             { new: true } // Return the updated document
+    //         );
+
+    //         if (!issue) {
+    //             req.flash('error', 'Issue not found');
+    //             return res.redirect('/issues');
+    //         }
+
+    //         res.redirect("/event")
+    //     } catch (error) {
+    //         console.error('Error updating upvotes:', error);
+    //         res.status(500).send('Internal Server Error');
+    //     }
+
+    // });
+    app.put('/issues/upvote/:id', async (req, res) => {
         const { id } = req.params;
+        req.curUser = req.user;
+        const user = req.curUser;
+        const userId = user._id;
 
         try {
-            const issue = await Issues.findByIdAndUpdate(
-                id,
-                { $inc: { upvote: 1 } }, // Increment upvotes by 1
-                { new: true } // Return the updated document
-            );
+            const issue = await Issues.findById(id);
 
             if (!issue) {
                 req.flash('error', 'Issue not found');
                 return res.redirect('/issues');
             }
 
-            res.redirect("/event")
+            // Check if the current user has already upvoted
+            if (!issue.upvotedBy.includes(userId)) {
+                // Increment upvotes by 1
+                issue.upvote += 1;
+                // Add the user ID to the upvoters array
+                issue.upvotedBy.push(userId);
+                // Save the updated issue
+                await issue.save();
+
+                res.redirect("/event");
+            } else {
+                req.flash('error', 'You have already upvoted this issue');
+                res.redirect("/event");
+            }
         } catch (error) {
             console.error('Error updating upvotes:', error);
             res.status(500).send('Internal Server Error');
         }
-
     });
+
     //status changes
     app.put("/Issues/status/:id",async(req,res)=>{
         const {id}=req.params;

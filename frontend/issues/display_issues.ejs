@@ -421,9 +421,9 @@
                                                                         <br>
                                                                         <form
                                                                             action="/comments/<%= comment.id %>/<%= issue._id %>?_method=PUT"
-                                                                            method="post">
+                                                                            method="post" id="upvote2">
                                                                             
-                                                                                <button type="submit" form="update" style="border: none;" class="m" title="agree?">
+                                                                                <button type="submit" form="upvote2" style="border: none;" class="m" title="agree?">
                                                                                     <i class="fa fa-thumbs-up"></i> : <%= comment.upvote %>
                             
                                                                                 </button>
