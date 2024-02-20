@@ -382,6 +382,7 @@ app.post('/createProfile',async (req, res) => {
             const issue = await Issues.findById(id).populate("Comments");
             const {createdBy}= issue;
             console.log(createdBy);
+            
             const user = await User.findById(createdBy);
             console.log("user found by is params",user);
 
@@ -421,6 +422,38 @@ app.post('/createProfile',async (req, res) => {
         console.log(id);
 
     });
+    //delete comment
+    
+    app.delete("/comments/:issueId/:commentId", async (req, res) => {
+        try {
+            const { issueId, commentId } = req.params;
+
+            // Find the issue by ID
+            const issue = await Issues.findById(issueId);
+
+            // Find the index of the comment with the given commentId
+            const commentIndex = issue.Comments.findIndex(comment => comment._id.equals(commentId));
+
+            // If the comment is found, remove it from the array
+            if (commentIndex !== -1) {
+                issue.Comments.splice(commentIndex, 1);
+
+                // Save the updated issue
+                await issue.save();
+
+                req.flash('success', 'Comment deleted successfully!');
+                res.redirect(`/issues/${issueId}`);
+            } else {
+                req.flash('error', 'Comment not found!');
+                res.redirect(`/issues/${issueId}`);
+            }
+        } catch (error) {
+            console.error('Error deleting comment:', error);
+            req.flash('error', 'Internal Server Error');
+            res.redirect(`/issues/${issueId}`);
+        }
+    });
+
     //comment upvote
     app.put('/comments/:id/:iid', async (req, res) => {
         const { id,iid } = req.params;

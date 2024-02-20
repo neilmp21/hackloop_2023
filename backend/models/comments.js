@@ -14,6 +14,10 @@ const commentSchema = new Schema({
     commentedBy:{
         type:String,
         default:"annonymous"
+    },
+    commentedAt:{
+        type:Date,
+        default:Date.now()
     }
     
     });

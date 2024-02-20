@@ -274,7 +274,7 @@
             <% if( success && success.length){ %>
 
                 <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
-                    <%= success %>
+                    <p>Welcome to our site</p>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
 
@@ -320,7 +320,7 @@
                                                                 <% } %>
                                         </p>
                                         <% if (issue.createdBy) { %>
-                                            <p class="card-text">Created By: <%= issue.createdBy %>
+                                            <p class="card-text">Created By: <%=user.username %>
                                             </p>
                                             <% } %>
                                                 <% if (!issue.createdBy) { %>
@@ -329,13 +329,11 @@
                                                     <% } %>
 
 
-                                                        <p class="card-text">Created At: <%= issue.createdAt %>
+                                                <p class="card-text">Created At: <%= issue.createdAt.toLocaleString().split(',').join(', ') %></p>
+
                                                         </p>
-                                                        <p class="card-text"><i class="fa fa-thumbs-up"
-                                                                style="font-size:24px"></i>
-                                                            : <%= issue.upvote %>
-                                                        </p>
-                                                        <% if (curuser.Type="ADMIN" ) { %>
+                                                       
+                                                        <% if (curuser.Type=="ADMIN" || curuser.id==issue.createdBy ) { %>
                                                             <form action="/Issues/status/<%= issue.id %>?_method=PUT"
                                                                 method="post" id="status">
                                                                 <label for="issueStatus">Update</label>
@@ -350,42 +348,43 @@
 
                                                             <% } %>
                                                                 <!-- Add image display if needed -->
-                                                                <% issue.images.forEach(image=> { %>
-                                                                    <% if (true) { %>
-                                                                        <img style="display: block; margin: auto;"
-                                                                            src="/images/<%= image %>" class="img-fluid"
-                                                                            width="300px" alt="Issue Image">
-                                                                        <br>
-                                                                        <% } %>
+                                                                <div style="background-color: #cecdcd; border-radius: 10px;" id="issueCarousel" class="carousel slide" data-bs-ride="carousel">
+                                                                    <div class="carousel-inner"style="height: 60vh; "   >
+                                                                        <% issue.images.forEach((image, index)=> { %>
+                                                                            <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                                                                                <img style="display: block; margin: auto; object-fit: contain; height: 60vh;"  src="/images/<%= image %>" class="d-block w-90 "
+                                                                                    alt="Issue Image">
+                                                                            </div>
                                                                             <% }) %>
+                                                                    </div>
+                                                                    <button class="carousel-control-prev" type="button" data-bs-target="#issueCarousel" data-bs-slide="prev">
+                                                                        <span class="carousel-control-prev-icon" style="color: black;" aria-hidden="true"></span>
+                                                                        <span class="visually-hidden">Previous</span>
+                                                                    </button>
+                                                                    <button class="carousel-control-next" type="button" data-bs-target="#issueCarousel" data-bs-slide="next">
+                                                                        <span class="carousel-control-next-icon" style="color: black;" aria-hidden="true"></span>
+                                                                        <span class="visually-hidden">Next</span>
+                                                                    </button>
+
+                                                                </div> <br>
+
+                                                               
+                                                                <form style="display: inline-block;" action="/Issues/upvote/<%= issue.id %>?_method=PUT" method="post" id="update">
+                                                                    <input type="hidden" name="_method" value="PUT">
+                                                                    <button type="submit" form="update" style="border: none;" class="ms-2" title="agree?">
+                                                                    <i class="fa fa-thumbs-up m-1" style="font-size:24px"> </i><%= issue.upvote %>
+                                                                      
+                                                                    </button>
+                                                                    
+                                                                </form>
+
 
                                     </div>
                                 </div>
 
                                 </nav>
 
-                                <!-- flash messages will be here -->
-                                <% if( success && success.length){ %>
-
-                                    <div class="alert alert-success alert-dismissible fade show col-6 offset-3"
-                                        role="alert">
-                                        <%= success %>
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                                aria-label="Close"></button>
-                                    </div>
-
-                                    <% } %>
-                                        <% if( error &&error.length){ %>
-
-                                            <div class="alert alert-danger alert-dismissible fade show col-6 offset-3"
-                                                role="alert">
-                                                <%= error %>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                                        aria-label="Close"></button>
-                                            </div>
-
-                                            <% } %>
-
+                               
 
 
 
@@ -403,8 +402,8 @@
                                                         <!-- Add your comment form fields here -->
                                                         <div class="form-group">
                                                             <label for="comment">Comment:</label>
-                                                            <textarea class="form-control" id="comment" name="comment"
-                                                                rows="3"></textarea>
+                                                            <textarea class="form-control" style="background-color: #cecdcd" id="comment" name="comment"
+                                                                rows="3" required></textarea>
                                                         </div>
                                                         <button type="submit" class="btn btn-primary" form="Comment">Add
                                                             Comment</button>
@@ -416,21 +415,50 @@
                                                             <% issue.Comments.forEach(comment=> { %>
                                                                 <li class="list-group-item">
                                                                     <%= comment.comment %>
-                                                                        <small> Commented By <%=comment.commentedBy %>
-                                                                        </small>
+                                                                    <br>
+                                                                        
+                                                                        <br>
+                                                                        <br>
                                                                         <form
                                                                             action="/comments/<%= comment.id %>/<%= issue._id %>?_method=PUT"
                                                                             method="post">
-                                                                            <p><i class="fa fa-thumbs-up"></i> : <%=
-                                                                                    comment.upvote %>
-                                                                            </p>
-                                                                            <%= comment.id %>
-                                                                                <button
-                                                                                    style="position: absolute; right: 5rem;"
-                                                                                    class="btn-sm btn-dark right-2">
-                                                                                    Upvote
+                                                                            
+                                                                                <button type="submit" form="update" style="border: none;" class="m" title="agree?">
+                                                                                    <i class="fa fa-thumbs-up"></i> : <%= comment.upvote %>
+                            
                                                                                 </button>
+                                                                                <br>   
+                                                                                <br>
                                                                         </form>
+                                                                        <small style="position: absolute; right: 5rem;" >~Commented By <%=comment.commentedBy %>
+                                                                        </small>
+                                                                        <%=comment.commentedAt.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })  %>
+                                                                        <%
+// Assuming comment.commentedAt is a Date object
+const now = new Date();
+const commentedAt = new Date(comment.commentedAt);
+const timeDifference = now - commentedAt;
+
+const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+const formattedTime = daysDifference === 1 ? 'a day ago' : `${daysDifference} days ago`;
+%>
+
+,<%= formattedTime %>
+
+                                                                        
+                                                                     <% if (curuser.id==issue.createdBy || curuser.Type=="ADMIN") { %>
+                                                                        <br><br>
+                                                                    <form id="delete" action="/comments/<%= issue._id %>/<%= comment.id %>?_method=DELETE" method="post">
+                                                                        <button style="position: absolute; right: 5rem; border-radius: 5px;" class="btn-sm btn-danger right-2" form="delete"
+                                                                            type="submit">delete</button>
+                                                                    
+                                                                    </form>
+                                                                    <br>
+                                                                     <% } %> 
+                                                                    
+                                                                    <br>
+
                                                                 </li><br>
                                                                 <% }) %>
                                                         </ul>
