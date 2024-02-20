@@ -385,6 +385,7 @@ app.post('/createProfile',async (req, res) => {
             
             const user = await User.findById(createdBy);
             console.log("user found by is params",user);
+            
 
           req.curUser= req.user;
          const curuser=req.curUser
@@ -529,28 +530,7 @@ app.post('/createProfile',async (req, res) => {
     });
     //upvotes
     // Update - update a specific issue in the database
-    // app.put('/issues/upvote/:id', async (req, res) => { // isLoggedIn,
-    //     const { id } = req.params;
-
-    //     try {
-    //         const issue = await Issues.findByIdAndUpdate(
-    //             id,
-    //             { $inc: { upvote: 1 } }, // Increment upvotes by 1
-    //             { new: true } // Return the updated document
-    //         );
-
-    //         if (!issue) {
-    //             req.flash('error', 'Issue not found');
-    //             return res.redirect('/issues');
-    //         }
-
-    //         res.redirect("/event")
-    //     } catch (error) {
-    //         console.error('Error updating upvotes:', error);
-    //         res.status(500).send('Internal Server Error');
-    //     }
-
-    // });
+   
     app.put('/issues/upvote/:id', async (req, res) => {
         const { id } = req.params;
         req.curUser = req.user;

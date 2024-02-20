@@ -237,7 +237,7 @@
             <!-- Nav Bar -->
 
             <nav style=" margin-top: -2%;" class="navbar navbar-expand-lg navbar-dark ">
-                <a class="navbar-brand" href="#">MyCommunity</a>
+            <a class="navbar-brand" href="/">MyCommunity</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -319,14 +319,11 @@
                                                                 </b>
                                                                 <% } %>
                                         </p>
-                                        <% if (issue.createdBy) { %>
-                                            <p class="card-text">Created By: <%=user.username %>
+                                        
+                                            <p class="card-text">Created By: <%= issue.createdBy %>
                                             </p>
-                                            <% } %>
-                                                <% if (!issue.createdBy) { %>
-                                                    <p class="card-text">Created By: user deleted
-                                                    </p>
-                                                    <% } %>
+                                            
+                                               
 
 
                                                 <p class="card-text">Created At: <%= issue.createdAt.toLocaleString().split(',').join(', ') %></p>
@@ -421,9 +418,9 @@
                                                                         <br>
                                                                         <form
                                                                             action="/comments/<%= comment.id %>/<%= issue._id %>?_method=PUT"
-                                                                            method="post" id="upvote2">
+                                                                            method="post" id="upvote2<%= comment.id  %>">
                                                                             
-                                                                                <button type="submit" form="upvote2" style="border: none;" class="m" title="agree?">
+                                                                                <button type="submit" form="upvote2<%= comment.id%>" style="border: none;" class="m" title="agree?">
                                                                                     <i class="fa fa-thumbs-up"></i> : <%= comment.upvote %>
                             
                                                                                 </button>
