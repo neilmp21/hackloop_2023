@@ -230,9 +230,9 @@
                                 <p class="card-text">
                                   <%= event.description %>
                                 </p>
-                                <p class="card-text"><small class="text-muted">Event Date: <%= event.date.toDateString()
+                                <p class="card-text"><small class="text-muted"><b>Event Date: </b> <%= event.date.toDateString()
                                       %></small></p>
-                                <p class="card-text"><small class="text-muted">Location: <%= event.location %></small>
+                                <p class="card-text"><small class="text-muted"> <b>Location:</b> <%= event.location %></small>
                                 </p>
                               </div>
                               <% if (  event.createdBy==user.id  || user.Type=="ADMIN") { %>
@@ -288,7 +288,7 @@
                           <p class="card-text">
                             <%= issue.description %>  
                           </p>
-                          <p class="card-text"><small class="text-muted">Event Date: <%= issue.createdAt %></small></p>
+                          <p class="card-text"><small class="text-muted"> <b>opened on :</b> <%= issue.createdAt.toLocaleString() %></small></p>
                           <!-- <p><%= issue.id  %></p> -->
                           <p> <i class="fa fa-thumbs-up" style="font-size:24px;color: red;"></i> : <%= issue.upvote  %></p>
                           
