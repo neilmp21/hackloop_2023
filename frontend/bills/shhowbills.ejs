@@ -159,6 +159,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/createProfile">Profile</a>
                         </li>
+                        <li>
+                            <a class="nav-link" href="/showMaintance">Maintainance Bills</a>
+                        </li>
                         <% if (!user) { %>
                             <li class="nav-item">
                                 <a class="nav-link" href="/login">Login</a>
@@ -175,24 +178,7 @@
 
             </nav>
 
-            <!-- flash messages will be here -->
-            <% if( success && success.length){ %>
-
-                <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
-                    <%= success %>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-
-                <% } %>
-                    <% if( error &&error.length){ %>
-
-                        <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
-                            <%= error %>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                    aria-label="Close"></button>
-                        </div>
-
-                        <% } %>
+           
 
 
 
@@ -201,65 +187,54 @@
 
 
 
+<h2>Bills</h2>
+<br>
+<!-- Add Bill Button -->
+<% if (user.Type=="ADMIN") { %>
+<form method="get" action="/maintainanceForm">
+    <button class="btn btn-dark mb-3">ADD BILL &nbsp; <i class="fa fa-money" aria-hidden="true"></i></button>
+</form>
+<% } %>
 
-                            <div class="container mt-5  ">
-                                <!-- <h1 class="navbar-dark">Upcoming Events</h1> -->
-                                <% if (events.length==0) { %>
-                                    <h2>No Events added yet :(</h2>
-                                    <% } %>
-
-                                        <h2>Events</h2>
-                                        <br>
-                                        <!-- Add Event Button -->
-                                        <form method="get" action="/addevent">
-                                            <button class="btn btn-dark mb-3">ADD EVENT &nbsp; <i
-                                                    class="fa fa-handshake" aria-hidden="true"></i></button>
-                                        </form>
-                                        <!-- Event Cards -->
-                                        <div class="card-deck">
-                                            <% events.forEach(event=> { %>
-                                                <div class="card">
-                                                    <!-- Event Image (if available) -->
-                                                    <% if (event.image) { %>
-                                                        <img src="<%= event.image  %>" class="card-img-top"
-                                                            alt="Event Image">
-                                                        <% } %>
-
-                                                            <div style="padding-bottom: 10%;" class="card-body">
-                                                                <h5 class="card-title">
-                                                                    <%= event.Name %>
-                                                                </h5>
-                                                                <p class="card-text">
-                                                                    <%= event.description %>
-                                                                </p>
-                                                                <p class="card-text"><small class="text-muted">Event
-                                                                        Date: <%= event.date.toDateString() %></small>
-                                                                </p>
-                                                                <p class="card-text"><small class="text-muted">Location:
-                                                                        <%= event.location %></small>
-                                                                </p>
-                                                            </div>
-                                                            <% if (user.Type=="ADMIN" || event.createdBy==user.id ) { %>
-                                                                <form action="/event/<%= event.id %>?_method=DELETE"
-                                                                    method="post">
-                                                                    <button
-                                                                        style="margin-left: 30%; margin-bottom: 10%;"
-                                                                        class="btn btn-dark ">
-                                                                        Delete event
-                                                                    </button>
-                                                                </form>
-                                                                <% } %>
-
-                                                </div>
-                                                <% }); %>
-                                        </div>
-                            </div>
+<!-- Bill Cards -->
+<% if (bills.length==0) { %>
+    <br><br><br>
+ <h2>Bills are not added yet</h2>
+ <br><br><br>
+ <br>
+<% } %>
+<div class="card-deck">
+    <% bills.forEach(bill=> { %>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <%= bill.billSubject %>
+                </h5>
+                <p class="card-text">
+                    Amount: $<%= bill.amount %>
+                </p>
+                <p class="card-text">
+                    Due Date: <%= bill.dueDate.toDateString() %>
+                </p>
+                <p class="card-text"><small class="text-muted">Created At: <%= bill.createdAt.toDateString() %></small>
+                </p>
+            </div>
+            <% if ( user.Type=="ADMIN" ) { %>
+                <br><br>
+                <form id="delete" action="/bills/<%=bill.id %>?_method=DELETE" method="post">
+                    <button style="position: absolute; right: 5rem; border-radius: 5px;" class="btn-sm btn-danger right-2"
+                        form="delete" type="submit">delete</button>
+            
+                </form>
+                <br>
+                <% } %>
+        </div>
+        <% }); %>
+</div>
 
 
 
-                            <div class="cards">
-                                
-                            </div>
+                          
 
                            
 

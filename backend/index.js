@@ -670,16 +670,16 @@ app.put("/MakeAdmin/:id", async (req, res) => {
     })
     app.get("/showMaintance",async(req,res)=>{
         req.curUser=req.user;
-        user=req.curUser;
-         const all = await MaintenanceBill.find()
-         console.log(all)
-         res.render("bills/shhowbills.ejs",{all})
+       const  user=req.curUser;
+         const bills = await MaintenanceBill.find()
+         
+         res.render("bills/shhowbills.ejs",{bills,user})
 
     })
     app.post('/addMaintenanceBill', async (req, res) => {
         try {
             const { billSubject, amount, dueDate } = req.body;
-
+            console.log(billSubject,amount,dueDate);
             // Create a new MaintenanceBill instance
             const newMaintenanceBill = new MaintenanceBill({
                 billSubject,
@@ -697,6 +697,12 @@ app.put("/MakeAdmin/:id", async (req, res) => {
             res.status(500).send('Internal Server Error');
         }
     });
+    app.delete("/bills/:id",async (req,res)=>{
+        const {id}= req.params;
+        const deleted = await MaintenanceBill.findByIdAndDelete(id);
+        console.log(deleted)
+        res.redirect("/showMaintance");
+    })
 
     
 
