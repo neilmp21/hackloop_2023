@@ -220,13 +220,17 @@
                 </p>
             </div>
             <% if ( user.Type=="ADMIN" ) { %>
-                <br><br>
+                
+                
+                <form action="#">
+                    <button class="btn-primary ms-3">Pay</button>
+                </form>
                 <form id="delete" action="/bills/<%=bill.id %>?_method=DELETE" method="post">
                     <button style="position: absolute; right: 5rem; border-radius: 5px;" class="btn-sm btn-danger right-2"
                         form="delete" type="submit">delete</button>
             
                 </form>
-                <br>
+                <br><br>
                 <% } %>
         </div>
         <% }); %>
