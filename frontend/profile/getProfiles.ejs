@@ -2,31 +2,43 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title>Colony Management</title>
+	<meta charset="utf-8">
+	<title>Colony Management</title>
 
-  <!-- Google fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat:ital@1&family=Sacramento&family=Ubuntu&display=swap" rel="stylesheet">
+	<!-- Google fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat:ital@1&family=Sacramento&family=Ubuntu&display=swap"
+		rel="stylesheet">
 
-  <!-- CSS Stylesheet -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <link rel="stylesheet" href="frontend/css/home.css">
+	<!-- CSS Stylesheet -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<link rel="stylesheet" href="frontend/css/home.css">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
- <!-- Bootstrap scripts -->
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+		integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- Bootstrap scripts -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+		crossorigin="anonymous"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-<style>
- .container-fluid{
-padding: 3% 15% 7%;
-}
-/* #title{
+	<style>
+		.container-fluid {
+			padding: 3% 15% 7%;
+		}
+
+		/* #title{
 background-color: #ff4c68;
 color:#fff;
 }
@@ -61,113 +73,119 @@ p{
 }
 
 /* Navigation Bar */
-.navbar{
-    padding: 0 0 4.5rem;
-    
- }
- table{
-	display: block;
-	
-	
- }
-.navbar-brand{
-font-family: "ubuntu";
-font-size: 2.0rem;
-font-weight: bold; 
-}
-.nav-item{
-padding: 0 18px;
-}
-.nav-link{
-font-size: 1.2rem;
-font-family: "montserrat-light";
-}
-/* Download Buttons */
-.download-button{
-margin:5% 3% 5% 0;
-}
+		.navbar {
+			padding: 0 0 4.5rem;
+			margin-top: -2vw;
 
-.main {
-    color: wheat;
-    font-style: italic;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+		}
 
-}
+		.navbar-brand {
+			font-family: "ubuntu";
+			font-size: 2.0rem;
+			font-weight: bold;
+		}
 
-label {
-    color: white;
-    font-style: oblique;
-    font-size: larger;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		.nav-item {
+			padding: 0 18px;
+		}
 
-}
+		.nav-link {
+			font-size: 1.2rem;
+			font-family: "montserrat-light";
+		}
 
+		/* Download Buttons */
+		.download-button {
+			margin: 5% 3% 5% 0;
+		}
 
-button {
-    margin-top: 2vw;
-    padding: 1vw;
-    border-radius: 4px;
-    background-color: #d9534f;
+		.main {
+			color: wheat;
+			font-style: italic;
+			font-family: Verdana, Geneva, Tahoma, sans-serif;
 
-}
+		}
+
+		label {
+			color: white;
+			font-style: oblique;
+			font-size: larger;
+			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+		}
 
 
-input[type="text"],
-input[type="date"],
-input[type="file"] {
-    width: 100%;
-    padding: 8px;
-    margin: 5px 0;
-    box-sizing: border-box;
-    background-color:#ddd ;
-}
+		button {
+			margin-top: 2vw;
+			padding: 1vw;
+			border-radius: 4px;
+			background-color: #d9534f;
+
+		}
+
+
+		input[type="text"],
+		input[type="date"],
+		input[type="file"] {
+			width: 100%;
+			padding: 8px;
+			margin: 5px 0;
+			box-sizing: border-box;
+			background-color: #ddd;
+		}
 
 
 
-#imageUploadSpace {
-    border: 1px dashed #170000;
-    padding: 20px;
-    margin-bottom: 30px;
+		#imageUploadSpace {
+			border: 1px dashed #170000;
+			padding: 20px;
+			margin-bottom: 30px;
 
-}
+		}
 
-form {
-    margin-bottom: 20px;
+		form {
+			margin-bottom: 20px;
 
 
-} */
+		}
 
- /*TESTIMONIAL*/
- *{
+		*/
+
+		/*TESTIMONIAL*/
+		* {
 			margin: 0;
 			padding: 0;
 			box-sizing: border-box;
 		}
-		body{
+
+		body {
 			width: 100%;
 			min-height: 100vh;
-      font-family: 'Montserrat';
-      background: linear-gradient(to right, #9b59b6, #e74c3c);
+			font-family: 'Montserrat';
+			background: linear-gradient(to right, #9b59b6, #e74c3c);
 			display: flex;
 			justify-content: center;
 			align-items: center;
 		}
-		.container{
+
+		.container {
 			position: relative;
 			width: 100%;
-			min-height: 450px;
-      border-radius: 5px;
-			background: rgb(240,14,113);
-      background: radial-gradient(circle, rgba(240,14,113,1) 8%, rgb(6, 6, 6) 42%, rgba(0, 0, 0, 0) 100%);
-      color:white;
+			min-height: 500px;
+			border-radius: 5px;
+			background: rgb(240, 14, 113);
+			background: radial-gradient(circle, rgba(240, 14, 113, 1) 8%, rgb(6, 6, 6) 42%, rgba(0, 0, 0, 0) 100%);
+			color: white;
 		}
-		.container .contents-wraper{
+
+		.container .contents-wraper {
 			width: 70%;
 			min-height: inherit;
 			margin: 30px auto;
 			text-align: center;
 		}
-		.contents-wraper .header h1{
+
+		.contents-wraper .header h1 {
 			position: relative;
 			font-size: 40px;
 			text-transform: uppercase;
@@ -175,9 +193,10 @@ form {
 			text-align: center;
 			letter-spacing: 1px;
 		}
-		.contents-wraper .header h1::before{
+
+		.contents-wraper .header h1::before {
 			content: '';
-			width: 200px;
+			width: 300px;
 			height: 2px;
 			background-color: #006994;
 			border-radius: 15px;
@@ -186,13 +205,15 @@ form {
 			transform: translateX(-50%);
 			bottom: -10px;
 		}
-		.contents-wraper .testRow{
+
+		.contents-wraper .testRow {
 			width: 100%;
 			min-height: inherit;
 			position: relative;
 			overflow: hidden;
 		}
-		.testRow .testItem{
+
+		.testRow .testItem {
 			width: 100%;
 			height: 100%;
 			position: absolute;
@@ -200,35 +221,43 @@ form {
 			justify-content: center;
 			align-items: center;
 			flex-direction: column;
+			left: 100%;
 		}
-		.testRow .testItem:not(.active){
+
+		.testRow .testItem:not(.active) {
 			top: 0;
 			left: -100%;
 		}
-		.testRow .testItem img{
-			width: 120px;
-			height: 120px;
+
+		.testRow .testItem img {
+			width: 200px;
+			height: 200px;
 			border-radius: 50%;
 			object-fit: cover;
+			margin-top: 100px;
 			margin-bottom: 5px;
 			outline: 2px solid #006994;
-			outline-offset: 2px;
+			outline-offset: 1px;
 		}
-		.testRow .testItem h3{
+
+		.testRow .testItem h3 {
 			font-size: 30px;
 			font-style: italic;
 			padding: 7px;
 		}
-		.testRow .testItem h4{
+
+		.testRow .testItem h4 {
 			font-style: italic;
 		}
-		.testRow .testItem p{
+
+		.testRow .testItem p {
 			font-size: 18px;
 			letter-spacing: 1px;
 			line-height: 1.2;
 			padding: 10px;
 		}
-		.contents-wraper .indicators{
+
+		.contents-wraper .indicators {
 			position: absolute;
 			bottom: 30px;
 			left: 50%;
@@ -236,334 +265,330 @@ form {
 			padding: 5px;
 			cursor: pointer;
 		}
-		.contents-wraper .indicators .dot{
+
+		.contents-wraper .indicators .dot {
 			width: 15px;
 			height: 15px;
 			margin: 0px 3px;
 			border: 3px solid #aaa;
 			border-radius: 50%;
 			display: inline-block;
-			transition: background-color 0.5s ease;
+			transition: background-color .1s ease;
 		}
-		.contents-wraper .indicators .active{
+
+		.contents-wraper .indicators .active {
 			background-color: #006994;
-		}
-		@keyframes next1{
-			from{
+		} 
+
+		@keyframes next1 {
+			from {
 				left: 0%;
 			}
-			to{
+
+			to {
 				left: -100%;
 			}
 		}
-		@keyframes next2{
-			from{
-				left: 100%;
+
+		@keyframes next2 {
+			from {
+				left: 50%;
 			}
-			to{
+
+			to {
 				left: 0%;
 			}
 		}
 
-		@keyframes prev1{
-			from{
+		@keyframes prev1 {
+			from {
 				left: 0%;
 			}
-			to{
+
+			to {
 				left: 100%;
 			}
 		}
-		@keyframes prev2{
-			from{
+
+		@keyframes prev2 {
+			from {
 				left: -100%;
 			}
-			to{
+
+			to {
 				left: 0%;
 			}
 		}
 
-		@media(max-width: 550px){
-			.container .contents-wraper{
+		@media(max-width: 550px) {
+			.container .contents-wraper {
 				width: 90%;
 			}
-			.contents-wraper .header h1{
+
+			.contents-wraper .header h1 {
 				font-size: 32px;
 			}
-			.testRow .testItem h3{
+
+			.testRow .testItem h3 {
 				font-size: 26px;
 			}
-			.testRow .testItem p{
+
+			.testRow .testItem p {
 				font-size: 16px;
 				letter-spacing: initial;
 				line-height: initial;
 			}
 
 		}
-
-		
-
-
-
-</style>
+	</style>
 </head>
 
 <body>
 
-  <!-- <section id="title"> -->
-    <div class="container-fluid"> 
-
-    
-
-<nav class="navbar navbar-expand-lg navbar-dark ">
-  <a class="navbar-brand" href="#">MyCommunity</a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ms-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/event">Events & Issues</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/createProfile">Profile</a>
-      </li>
-    </ul>
-  </div>
-
-</nav>
- 
-  
-  <% if( success && success.length){ %>
-  
-    <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
-      <%= success %>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  
-    <% } %>
-      <% if( error &&error.length){ %>
-  
-        <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
-          <%= error %>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-  
-        <% } %>
+	<!-- <section id="title"> -->
+	<div class="container-fluid">
 
 
-        <div class="container">
-	
-          <div class="contents-wraper">
-            
-            <section class="header"><h1> Members</h1></section>
-        
-            <section class="testRow">
 
-				<% profiles.forEach(profile=> { %>
+		<nav class="navbar navbar-expand-lg navbar-dark ">
+			<a class="navbar-brand" href="#">MyCommunity</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+				aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/event">Events & Issues</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/createProfile">Profile</a>
+					</li>
+				</ul>
+			</div>
 
-					<div class="testItem active">
-						<img src="<%= profile.profileImage %>" alt="<%= profile.username %>">
-						<h3><%= profile.username %></h3>
-						<h4>Bio: <%= profile.bio  %></h4>
-						<p>Designation : <%= profile.Type%></p>
-						<% if (user.Type=="ADMIN" ) { %>
-							<section class="header">
-								<h1> Members</h1>
-							</section>
-						
-							<section class="testRow">
-						
-						
+		</nav>
 
-							
-							<% } %>
-							</div>
-							<% }) %>
-												
-					
+
+		<% if( success && success.length){ %>
+
+			<div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
+				<%= success %>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+
+			<% } %>
+				<% if( error &&error.length){ %>
+
+					<div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
+						<%= error %>
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 					</div>
 
-</div>
-							
-				
-									
-              
+					<% } %>
 
-        
-            <section class="indicators">
-              <div class="dot active" attr='0' onclick="switchTest(this)"></div>
-              <div class="dot" attr='1' onclick="switchTest(this)"></div>
-              <div class="dot" attr='2' onclick="switchTest(this)"></div>
-              <div class="dot" attr='3' onclick="switchTest(this)"></div>
-              <div class="dot" attr='4' onclick="switchTest(this)"></div>
-            </section>
-        
-		<!-- editing place for admin -->
-		<% if (user.Type=="ADMIN" ) { %>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Username</th>
-						<th>Email</th>
-						<th>DOB</th>
-						<th>Bio</th>
-						<th>Profile Image</th>
-						<th>Phone Number</th>
-						<th>User Type</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% profiles.forEach(profile=> { %>
-						<tr>
-							<td>
-								<%= profile.username %>
-							</td>
-							<td>
-								<%= profile.email %>
-							</td>
-							<% if (profile.dateOfBirth) { %>
-							<td>
-								<%= profile.dateOfBirth.toLocaleString() %>
-							</td>
+
+						<div class="container">
+
+							<div class="contents-wraper">
+
+								<section class="header">
+									<h1> Members</h1>
+								</section>
+
+								<section class="testRow">
+
+									<% profiles.forEach(profile=> { %>
+
+										<div class="testItem active">
+											<img src="<%= profile.profileImage %>" alt="<%= profile.username %>"  loading="lazy">
+											<h3>
+												<%= profile.username %>
+											</h3>
+											<h4>Bio: <%= profile.bio %>
+											</h4>
+											<p>Designation : <%= profile.Type%>
+											</p>
+											<% if (user.Type=="ADMIN" ) { %>
+												<section class="header">
+													<h1> Members</h1>
+												</section>
+
+												<section class="testRow">
+
+
+
+
+													<% } %>
+										</div>
+										<% }) %>
+
+
+							</div>
+
+						</div>
+
+
+
+
+
+
+						<section class="indicators">
+							<div class="dot active" attr='0' onclick="switchTest(this)"></div>
+							<div class="dot" attr='1' onclick="switchTest(this)"></div>
+							<div class="dot" attr='2' onclick="switchTest(this)"></div>
+							<div class="dot" attr='3' onclick="switchTest(this)"></div>
+							<div class="dot" attr='4' onclick="switchTest(this)"></div>
+						</section>
+
+						<!-- editing place for admin -->
+						<% if (user.Type=="ADMIN" ) { %>
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Username</th>
+										<th>Email</th>
+										<th>DOB</th>
+										<th>Bio</th>
+										<th>Profile Image</th>
+										<th>Phone Number</th>
+										<th>User Type</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<% profiles.forEach(profile=> { %>
+										<tr>
+											<td>
+												<%= profile.username %>
+											</td>
+											<td>
+												<%= profile.email %>
+											</td>
+											<td>
+												<%= profile.dateOfBirth %>
+											</td>
+											<td>
+												<%= profile.bio %>
+											</td>
+											<td><img src="<%= profile.profileImage %>" alt="Profile Image"
+													style="width: 50px; height: 50px;">
+											</td>
+											<td>
+												<%= profile.phoneNumber %>
+											</td>
+											<td>
+												<%= profile.Type %>
+											</td>
+											<td>
+												<form action="/profile/<%= profile._id %>?_method=DELETE" method="post">
+													<button class="btn btn-danger">Delete</button>
+												</form>
+
+												<% if (profile.Type==="USER" ) { %>
+													<form action="/MakeAdmin/<%= profile._id %>?_method=PUT"
+														method="post">
+														<input type="hidden" name="_method" value="PUT">
+														<button class="btn btn-warning">Make Admin</button>
+													</form>
+													<% } else if (profile.Type==="ADMIN" ) { %>
+														<form action="/MakeUser/<%= profile._id %>?_method=PUT"
+															method="post">
+															<input type="hidden" name="_method" value="PUT">
+															<button class="btn btn-info">Make User</button>
+														</form>
+														<% } %>
+											</td>
+										</tr>
+										<% }); %>
+								</tbody>
+							</table>
 							<% } %>
-							<% if (!profile.dateOfBirth) { %>
-								<td>
-									---
-								</td>
-								<% } %>
-							
-							 
-							<% if (profile.bio) { %>
-							<td>
-								<%= profile.bio %>
-							</td>
-							<% } %>
-							<% if (!profile.bio) { %>
-								<td>
-									---
-								</td>
-								<% } %>
-							
-							<td><img src="<%= profile.profileImage %>" alt="Profile Image" style="width: 50px; height: 50px;">
-							</td>
-							<% if (profile.phoneNumber) { %>
-							<td>
-								<%= profile.phoneNumber %>
-							</td>
-							<% } %>
-							<% if (!profile.phoneNumber) { %>
-								<td>
-									---
-								</td>
-								<% } %>
-							
-							<td>
-								<%= profile.Type %>
-							</td>
-							<td>
-								<form action="/profile/<%= profile._id %>?_method=DELETE" method="post">
-									<button class="btn btn-danger">Delete</button>
-								</form>
-		
-								<% if (profile.Type==="USER" ) { %>
-									<form action="/MakeAdmin/<%= profile._id %>?_method=PUT" method="post">
-										<input type="hidden" name="_method" value="PUT">
-										<button class="btn btn-warning">Make Admin</button>
-									</form>
-									<% } else if (profile.Type==="ADMIN" ) { %>
-										<form action="/MakeUser/<%= profile._id %>?_method=PUT" method="post">
-											<input type="hidden" name="_method" value="PUT">
-											<button class="btn btn-info">Make User</button>
-										</form>
-										<% } %>
-							</td>
-						</tr>
-						<% }); %>
-				</tbody>
-			</table>
-			<% } %>
-        
-        
-        <script>   
-	// Access the testimonials
-	let testSlide = document.querySelectorAll('.testItem');
-	// Access the indicators
-	let dots = document.querySelectorAll('.dot');
 
-	var counter = 0;
 
-	// Add click event to the indicators
-	function switchTest(currentTest){
-		currentTest.classList.add('active');
-		var testId = currentTest.getAttribute('attr');
-		if(testId > counter){
-			testSlide[counter].style.animation = 'next1 0.5s ease-in forwards';
-			counter = testId;
-			testSlide[counter].style.animation = 'next2 0.5s ease-in forwards';
-		}
-		else if(testId == counter){return;}
-		else{
-			testSlide[counter].style.animation = 'prev1 0.5s ease-in forwards';
-			counter = testId;
-			testSlide[counter].style.animation = 'prev2 0.5s ease-in forwards';
-		}
-		indicators();
-	}
+								<script>
+									// Access the testimonials
+									let testSlide = document.querySelectorAll('.testItem');
+									// Access the indicators
+									let dots = document.querySelectorAll('.dot');
 
-	// Add and remove active class from the indicators
-	function indicators(){
-		for(i = 0; i < dots.length; i++){
-			dots[i].className = dots[i].className.replace(' active', '');
-		}
-		dots[counter].className += ' active';
-	}
+									var counter = 0;
 
-	// Code for auto sliding
-	function slideNext(){
-		testSlide[counter].style.animation = 'next1 0.5s ease-in forwards';
-		if(counter >= testSlide.length - 1){
-			counter = 0;
-		}
-		else{
-			counter++;
-		}
-		testSlide[counter].style.animation = 'next2 0.5s ease-in forwards';
-		indicators();
-	}
-	function autoSliding(){
-		deleteInterval = setInterval(timer, 2000);
-		function timer(){
-			slideNext();
-			indicators();
-		}
-	}
-	autoSliding();
+									// Add click event to the indicators
+									function switchTest(currentTest) {
+										currentTest.classList.add('active');
+										var testId = currentTest.getAttribute('attr');
+										if (testId > counter) {
+											testSlide[counter].style.animation = 'next1 0.5s ease-in forwards';
+											counter = testId;
+											testSlide[counter].style.animation = 'next2 0.5s ease-in forwards';
+										}
+										else if (testId == counter) { return; }
+										else {
+											testSlide[counter].style.animation = 'prev1 0.5s ease-in forwards';
+											counter = testId;
+											testSlide[counter].style.animation = 'prev2 0.5s ease-in forwards';
+										}
+										indicators();
+									}
 
-	// Stop auto sliding when mouse is over the indicators
-	const container = document.querySelector('.indicators');
-	container.addEventListener('mouseover', pause);
-	function pause(){
-		clearInterval(deleteInterval);
-	}
+									// Add and remove active class from the indicators
+									function indicators() {
+										for (i = 0; i < dots.length; i++) {
+											dots[i].className = dots[i].className.replace(' active', '');
+										}
+										dots[counter].className += ' active';
+									}
 
-	// Resume sliding when mouse is out of the indicators
-	container.addEventListener('mouseout', autoSliding);
+									// Code for auto sliding
+									function slideNext() {
+										testSlide[counter].style.animation = 'next1 0.5s ease-in forwards';
+										if (counter >= testSlide.length - 1) {
+											counter = 0;
+										}
+										else {
+											counter++;
+										}
+										testSlide[counter].style.animation = 'next2 0.5s ease-in forwards';
+										indicators();
+									}
+									function autoSliding() {
+										deleteInterval = setInterval(timer, 2000);
+										function timer() {
+											slideNext();
+											indicators();
+										}
+									}
+									autoSliding();
 
-        </script>
+									// Stop auto sliding when mouse is over the indicators
+									const container = document.querySelector('.indicators');
+									container.addEventListener('mouseover', pause);
+									function pause() {
+										clearInterval(deleteInterval);
+									}
 
-     <!-- Bootstrap JS and Popper.js (required for Bootstrap components) -->
-  <!-- <script src="/scripts.js"></script> -->
+									// Resume sliding when mouse is out of the indicators
+									container.addEventListener('mouseout', autoSliding);
 
-     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-      integrity="sha384-oBqDVmMz4fnFO9gybBud7TlRbs/ic4AwGcFZOxg5DpPt8EgeUIgIwzjWfXQKWA3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
-      integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+								</script>
+
+								<!-- Bootstrap JS and Popper.js (required for Bootstrap components) -->
+								<!-- <script src="/scripts.js"></script> -->
+
+								<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+								<script
+									src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+								<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+									integrity="sha384-oBqDVmMz4fnFO9gybBud7TlRbs/ic4AwGcFZOxg5DpPt8EgeUIgIwzjWfXQKWA3"
+									crossorigin="anonymous"></script>
+								<script
+									src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+									integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" 
+									crossorigin="anonymous" ></script>
 </body>
 
 </html>
