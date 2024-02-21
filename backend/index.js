@@ -210,7 +210,7 @@ console.log(req.curUser._id)}
     }));
 
 //Events
-    app.get("/event", async (req, res) => {   //,isLoggedIn
+    app.get("/event",isLoggedIn, async (req, res) => {   //
      const issues = await Issues.find();
     const events= await Event.find();
 
@@ -257,7 +257,7 @@ console.log(req.curUser._id)}
     }
 });
 
-    app.get("/addevent", async (req, res) => {
+    app.get("/addevent", isLoggedIn, async (req, res) => {
         req.curUser= req.user;
         const user = req.curUser;
         
@@ -300,7 +300,7 @@ app.delete("/event/:id",async(req,res)=>{
 
 //PROFILE
 //see all the profiles from db
-    app.get('/getProfiles', async (req, res) => {//, isLoggedIn
+    app.get('/getProfiles', isLoggedIn, async (req, res) => {//, isLoggedIn
         // const deleted = await User.deleteMany();
          const profiles =await User.find();
         req.curUser = req.user;
@@ -312,7 +312,7 @@ app.delete("/event/:id",async(req,res)=>{
          res.render("profile/getProfiles.ejs",{profiles,user});// added admin visiblity
     });
 //get form to add profile
-   app.get("/createProfile",(req,res)=>{
+    app.get("/createProfile", isLoggedIn,(req,res)=>{
        const user = req.user;
     // console.log(user);
     res.render("profile/profile.ejs",{user});
@@ -341,7 +341,7 @@ app.post('/createProfile',async (req, res) => {
    // see the events route
 
     // New - show form to create a new issue
-    app.get('/issues/new', (req, res) => {
+    app.get('/issues/new', isLoggedIn, (req, res) => {
         req.curUser = req.user;
         const user=req.curUser;
         // console.log(user);
@@ -376,7 +376,7 @@ app.post('/createProfile',async (req, res) => {
 
 
     // Show - display details of a specific issue
-    app.get('/issues/:id', async (req, res) => { // isLoggedIn,
+    app.get('/issues/:id', isLoggedIn, async (req, res) => { // isLoggedIn,
         try {
             const { id } = req.params;
             const issue = await Issues.findById(id).populate("Comments");
@@ -500,7 +500,7 @@ app.post('/createProfile',async (req, res) => {
 
 
     // Edit - show form to edit a specific issue
-    app.get('/issues/:id/edit', async (req, res) => { //, isLoggedIn
+    app.get('/issues/:id/edit', isLoggedIn, async (req, res) => { //, isLoggedIn
         try {
             const { id } = req.params;
             const issue = await Issues.findById(id);
@@ -665,10 +665,10 @@ app.put("/MakeAdmin/:id", async (req, res) => {
     });
 
 
-    app.get('/maintainanceForm',(req,res)=>{
+    app.get('/maintainanceForm', isLoggedIn,(req,res)=>{
         res.render("bills/form.ejs")
     })
-    app.get("/showMaintance",async(req,res)=>{
+    app.get("/showMaintance", isLoggedIn,async(req,res)=>{
         req.curUser=req.user;
        const  user=req.curUser;
          const bills = await MaintenanceBill.find()
