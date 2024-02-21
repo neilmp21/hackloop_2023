@@ -370,7 +370,7 @@
                                     <label for="issueName">Issue Name :</label>
                                     <input type="text" id="issueName" name="issue[title]" required>
 <div id="imageUploadSpace">
-    <input type="file" id="img" name="uploadedImages" required multiple>
+    <input type="file" id="img" name="uploadedImages"  multiple>
     Upload IMAGE
 </div>
                                     <label for="issueDescription">Issue Description :</label>
@@ -386,7 +386,7 @@
 
                                     <label for="issueCreatedBy">Created By:</label>
                                     <% if (user) { %>
-                                        <input type="text" id="CreatedBy" name="issue[createdBy]" disabled
+                                        <input type="text" id="CreatedBy" name="issue[createdBy]" 
                                             value="<%= user.id %>">
                                         <% } else { %>
                                             <input type="text" id="CreatedBy" name="issue[createdBy]" value="">

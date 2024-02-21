@@ -319,9 +319,11 @@
                                                                 </b>
                                                                 <% } %>
                                         </p>
-                                        
-                                            <p class="card-text">Created By: <%= issue.createdBy %>
-                                            </p>
+                                        <% if (user) { %>
+                                        <p class="card-text">Created By: <%=user.username%>
+                                        </p>
+                                        <% } %>
+                                           
                                             
                                                
 
