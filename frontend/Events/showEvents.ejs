@@ -208,9 +208,9 @@
                       <% events.forEach(event=> { %>
                         <div class="card">
                           <!-- Event Image (if available) -->
-                          <% if (event.image) { %>
+                          <% if (event.image.url || true) { %>
                             <!-- <img src="<%= //event.image  %>" class="card-img-top" alt="Event Image"> -->
-                            <img src="/images/<%= event.image  %>" alt="trying some multer images">
+                            <img src="<%= event.image.url %>" alt="trying some multer images">
                             <% } %>
 
                               <div style="padding-bottom: 10%;" class="card-body">

@@ -16,8 +16,13 @@ const LocalStrategy = require('passport-local').Strategy;
 const passportLocalMongoose = require("passport-local-mongoose");
 const fs = require('fs');
 
-//image upload
+require('dotenv').config();
+const {storage}= require("./cloudConfig copy.js")
 const multer = require("multer");
+
+const upload = multer({ storage });
+
+
 
 const storagey = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -28,12 +33,12 @@ const storagey = multer.diskStorage({
         cb(null, Date.now()+"--"+ file.originalname);
     },
 })
-const upload = multer({ storage: storagey });
+// const upload = multer({ storage: storagey });
 
-app.post("/single",upload.single('image'),(req,res)=>{ //image upload demo
-    console.log(req.file);
-res.send("image uploaded succesfully")
-})
+// app.post("/single",upload.single('image'),(req,res)=>{ //image upload demo
+//     console.log(req.file);
+// res.send("image uploaded succesfully")
+// })
 // initializePassport(passport);
 
 //IMAGE DELETION
@@ -59,7 +64,7 @@ const deleteImage = (imageName) => {
 //importing for working with mongoDB
 const mongoose = require('mongoose');
 
-const MONGO_URL = 'mongodb://127.0.0.1:27017/Hackloop';
+const MONGO_URL = process.env.DATABASE_URL;
 // const MONGO_URL ='mongodb+srv://kush:nnm22is077@cluster0.ug1qw6w.mongodb.net/'
 
 
@@ -269,11 +274,12 @@ console.log(req.curUser._id)}
         // Extract the form data from req.body and req.file
         console.log(req.file)
         console.log(req.body);
-        
+        let url = req.file.path;
+        let filename=req.file.filename;
         
         const eventData = {
             ...req.body.event,
-            image: req.file.filename // assuming you want to save the filename
+            image: {url,filename } // assuming you want to save the filename
         };
 
         try {
@@ -354,7 +360,7 @@ app.post('/createProfile',async (req, res) => {
             const { title, description, status, createdBy } = req.body.issue;
 
             // Extract filenames from req.files
-            const imageFilenames = req.files.map(file => file.filename);
+            const imageFilenames = req.files.map(file => file.path);
 
             // Create a new issue with the extracted filenames
             const newIssue = new Issue({
