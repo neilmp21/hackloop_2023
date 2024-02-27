@@ -65,7 +65,7 @@ const deleteImage = (imageName) => {
 const mongoose = require('mongoose');
 
 const MONGO_URL = process.env.DATABASE_URL;
-// const MONGO_URL ='mongodb+srv://kush:nnm22is077@cluster0.ug1qw6w.mongodb.net/'
+
 
 
 main().then(() => { console.log("connected to DB") }).catch(err => console.log(err));
