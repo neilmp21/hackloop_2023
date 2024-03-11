@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Colony Management</title>
+
+    <!-- Google fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat:ital@1&family=Sacramento&family=Ubuntu&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <style>
+        *{
+            color: black;
+        }
+        body {
+
+            background-color: #ff4c68;
+            font-family: 'Montserrat';
+        }
+
+        #title {
+            color: #fff;
+        }
+
+        .container-fluid {
+            padding: 3% 15% 7%;
+        }
+
+        h1 {
+            font-family: 'Montserrat-Black', sans-serif;
+            font-size: 3.5rem;
+            line-height: 1.5;
+        }
+
+        h2 {
+            font-family: " montserrat-bold";
+            font-size: 3rem;
+            line-height: 3rem;
+
+        }
+
+        .card img {
+            width: auto;
+            height: 240px;
+        }
+
+
+        h1 {
+            font-size: 3.0rem;
+        }
+
+        h3 {
+            font-family: "montserrat-bold";
+            font-size: 1.5rem;
+        }
+
+        p {
+            color: #8f8f8f;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            padding: 0 0 4.5rem;
+
+        }
+
+        .navbar-brand {
+            font-family: "ubuntu";
+            font-size: 2.0rem;
+            font-weight: bold;
+        }
+
+        .nav-item {
+            padding: 0 18px;
+        }
+
+        .nav-link {
+            font-size: 1.2rem;
+            font-family: "montserrat-light";
+        }
+
+        /* Download Buttons */
+        .download-button {
+            margin: 5% 3% 5% 0;
+        }
+
+        .main {
+            color: wheat;
+            font-style: italic;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+        }
+
+        label {
+            color: white;
+            font-style: oblique;
+            font-size: larger;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+
+
+        #eventContainer {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 20px;
+            border-radius: 030px;
+            background-color: #333;
+        }
+
+        #eventForm {
+            display: flex;
+            flex-direction: column;
+            gap: .5vw;
+
+        }
+
+        button {
+            color: white;
+            margin-top: 2vw;
+            padding: 1vw;
+            border-radius: 4px;
+            background-color: grey;
+
+        }
+
+        button:hover {
+            background-color: black;
+        }
+
+
+        input[type="text"],
+        input[type="date"],
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            background-color: #ddd;
+            color: black;
+        }
+
+
+
+        #imageUploadSpace {
+            border: 1px dashed #170000;
+            padding: 20px;
+            margin-bottom: 30px;
+
+        }
+
+        form {
+            margin-bottom: 20px;
+
+
+        }
+
+        #eventList {
+            max-width: 400px;
+            margin: 0vw auto;
+            text-align: left;
+        }
+
+        .eventItem {
+            margin-top: 2vw;
+            flex: 0 0 calc(33.33% - 20px);
+            border: 1px solid #ccc;
+            padding: 40px;
+            box-sizing: border-box;
+            background-color: black;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        @media (max-width:1028px) {
+            #eventContainer {
+                position: relative;
+                top: 25vw;
+                max-width: 700px;
+                margin: 0 auto;
+                text-align: left;
+                padding: 25px;
+                border-radius: 8px;
+                background-color: #333;
+                border-radius: 50px;
+            }
+
+            .navbar {
+                margin-top: 5%;
+
+            }
+
+
+            label {
+                font-size: 2.5rem;
+            }
+
+            .navbar-brand {
+                font-size: 2.5rem;
+            }
+
+        }
+    </style>
+
+<body>
+
+    <section id="title">
+        <div class="container-fluid">
+
+        <nav class="navbar navbar-expand-lg navbar-dark ">
+            <a class="navbar-brand" href="/">MyCommunity</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+        
+        
+        
+        
+                    <% if (!user) { %>
+        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/event">Events &amp; Issues</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/showMaintance">Maintainance Bills</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/createProfile">Profile</a>
+                        </li>
+        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+        
+        
+        
+        
+                        <% } else { %>
+        
+                            <% if (user.Type=="EXTERNAL" ) { %>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/sales">Rental Rooms</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/createProfile">Profile</a>
+                                </li>
+                                <% } %>
+        
+                                    <% if (user.Type=="ADMIN" ) { %>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/addSales">Add Room</a>
+                                        </li>
+                                        <% } %>
+        
+                                            <% if (user.Type=="USER" || user.Type=="ADMIN" ) { %>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="/event">Events &amp; Issues</a>
+                                                </li>
+                                                <li>
+                                                    <a class="nav-link" href="/showMaintance">Maintainance Bills</a>
+                                                </li>
+                                                <% if (!user.Type=="USER" ) { %>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="/createProfile">Profile</a>
+                                                    </li>
+                                                    <% } %>
+        
+                                                        <% } %>
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" href="/logout">Logout</a>
+                                                            </li>
+        
+        
+                                                            <% } %>
+        
+        
+                </ul>
+            </div>
+        
+        </nav>
+
+            <!-- Flash Messages -->
+            <!-- ... -->
+
+        <div class="container mt-5">
+           
+                <a class="nav-link" href="/sales"> <h3  style="font-weight: bold; color: blue;">Existing rooms</h3></a>
+            
+            <h2>Add Room</h2>
+            <br>
+            <form action="/addRoom" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" style="color: black;" class="form-control" id="title" name="title" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="type" class="form-label">Type</label>
+                        <select class="form-control" id="type" name="type" required>
+                            <option value="rental">Rental</option>
+                            <option value="sale">Sale</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="price" name="price" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" class="form-control" id="location" name="location" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="bedrooms" class="form-label">Bedrooms</label>
+                        <input type="number" class="form-control" id="bedrooms" name="bedrooms" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="bathrooms" class="form-label">Bathrooms</label>
+                        <input type="number" class="form-control" id="bathrooms" name="bathrooms" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="squareFeet" class="form-label">Square Feet</label>
+                        <input type="number" class="form-control" id="squareFeet" name="squareFeet" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="agentName" class="form-label">Agent Name</label>
+                        <input type="text" class="form-control" id="agentName" name="agent[name]" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="agentContact" class="form-label">Agent Contact</label>
+                        <input type="text" class="form-control" id="agentContact" name="agent[contact]">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="images" class="form-label">Images</label>
+                    <input type="file" class="form-control" id="images" name="images" multiple>
+                </div>
+                <button type="submit" class="btn btn-dark">Add Room</button>
+            </form>
+        </div>
+            <!-- Bootstrap JS and Popper.js (required for Bootstrap components) -->
+            <!-- ... -->
+
+        </div>
+    </section>
+
+</body>
+
+</html>

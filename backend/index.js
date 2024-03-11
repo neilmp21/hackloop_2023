@@ -16,6 +16,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const passportLocalMongoose = require("passport-local-mongoose");
 const fs = require('fs');
 
+const cloudinary = require('cloudinary');
 require('dotenv').config();
 const {storage}= require("./cloudConfig copy.js")
 const multer = require("multer");
@@ -79,6 +80,7 @@ const Issues = require('./models/issues.js');
 const Comment = require('./models/comments.js');
 const Issue = require('./models/issues.js');
 const MaintenanceBill = require('./models/bill.js')
+const Room = require('./models/sales.js')
 
 
 //middlewares
@@ -182,7 +184,7 @@ app.get("/",(req,res)=>{
     // console.log(req.flash('success'));
     if(user){
     console.log(user._id);
-console.log(req.curUser._id)}
+     console.log(req.curUser._id)}
     res.render('home.ejs',{user});
 })    
 
@@ -300,6 +302,10 @@ console.log(req.curUser._id)}
 app.delete("/event/:id",async(req,res)=>{
     const {id}= req.params;
     const deletedEvent = await Event.findByIdAndDelete(id);
+    cloudinary.v2.api
+        .delete_resources([`${deletedEvent.image.filename}`],
+            { type: 'upload', resource_type: 'image' })
+        .then(console.log);
     console.log(id);
     res.redirect("/event");
 })
@@ -360,7 +366,10 @@ app.post('/createProfile',async (req, res) => {
             const { title, description, status, createdBy } = req.body.issue;
 
             // Extract filenames from req.files
-            const imageFilenames = req.files.map(file => file.path);
+            const imageDetails = req.files.map(file => ({
+                filename: file.filename,
+                url: file.path
+            }));
 
             // Create a new issue with the extracted filenames
             const newIssue = new Issue({
@@ -368,7 +377,7 @@ app.post('/createProfile',async (req, res) => {
                 description,
                 status,
                 createdBy,
-                images: imageFilenames,
+                images: imageDetails,
             });
 
             const savedIssue = await newIssue.save();
@@ -589,6 +598,14 @@ app.post('/createProfile',async (req, res) => {
             const deletedIssue = await Issues.findByIdAndDelete(id);
             req.flash('success', 'Issue deleted successfully!');
             res.redirect('/event');
+            deletedIssue.images.forEach(image => {
+                cloudinary.v2.api
+                    .delete_resources([`${image.filename}`],
+                        { type: 'upload', resource_type: 'image' })
+                    .then(console.log);
+                console.log(id);
+            });
+            console.log("All images from cloudinary deleted")
         } catch (error) {
             console.error('Error deleting issue:', error);
             res.status(500).send('Internal Server Error');
@@ -709,6 +726,90 @@ app.put("/MakeAdmin/:id", async (req, res) => {
         console.log(deleted)
         res.redirect("/showMaintance");
     })
+
+
+    //SALES option
+    app.get("/sales",async (req,res)=>{
+      const rooms= await Room.find();
+      console.log(rooms)
+    res.render("sales/index.ejs",{rooms})
+    })
+
+    app.get("/addSales",async(req,res)=>{
+        req.curUser= req.user;
+        const user = req.curUser;
+        res.render("sales/form.ejs",{user})
+    })
+
+    app.post('/addRoom', upload.array('images', 10), async (req, res) => {
+        try {
+            const { title, type, price, location, bedrooms, bathrooms, squareFeet, description, agent, images } = req.body;
+
+            // Upload images to Cloudinary
+            const uploadedImages = 
+                req.files.map( (file) => ({
+                    filename: file.filename,
+                    url: file.path
+                }));
+            
+
+            // Create a new room with the uploaded image details
+            const newRoom = new Room({
+                title,
+                type,
+                price,
+                location,
+                bedrooms,
+                bathrooms,
+                squareFeet,
+                description,
+                agent,
+                images: uploadedImages,
+            });
+
+            // Save the new room to the database
+            const savedRoom = await newRoom.save();
+
+            req.flash('success', 'Room added successfully!');
+            res.redirect('/sales');
+        } catch (error) {
+            console.error('Error adding room:', error);
+            res.status(500).send('Internal Server Error');
+        }
+    });
+
+    app.post('/deleteRoom/:roomId', async (req, res) => {
+        try {
+            const { roomId } = req.params;
+
+            // Find the room by ID
+            const roomToDelete = await Room.findById(roomId);
+
+            // Check if the room exists
+            if (!roomToDelete) {
+                req.flash('error', 'Room not found!');
+                return res.redirect('/sales');
+            }
+
+            // Delete images from Cloudinary
+            const imagePublicIds = roomToDelete.images.map((image) => image.filename);
+            await Promise.all(
+                imagePublicIds.map(async (publicId) => {
+                    await cloudinary.uploader.destroy(publicId);
+                })
+            );
+
+            // Delete the room from the database
+            await Room.findByIdAndDelete(roomId);
+
+            req.flash('success', 'Room deleted successfully!');
+            res.redirect('/sales');
+        } catch (error) {
+            console.error('Error deleting room:', error);
+            res.status(500).send('Internal Server Error');
+        }
+    });
+
 
     
 

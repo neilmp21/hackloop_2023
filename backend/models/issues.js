@@ -44,7 +44,8 @@ const IssueSchema = new Schema({
         },
     ],
     images:[{
-        type:String,
+        url:String,
+        filename:String,
 
     }]
 

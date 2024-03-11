@@ -354,7 +354,7 @@
                                                                     <div class="carousel-inner"style="height: 60vh; "   >
                                                                         <% issue.images.forEach((image, index)=> { %>
                                                                             <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
-                                                                                <img style="display: block; margin: auto; object-fit: contain; height: 60vh;"  src="<%= image %>" class="d-block w-90 "
+                                                                                <img style="display: block; margin: auto; object-fit: contain; height: 60vh;"  src="<%= image.url %>" class="d-block w-90 "
                                                                                     alt="Issue Image">
                                                                             </div>
                                                                             <% }) %>

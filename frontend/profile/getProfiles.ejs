@@ -497,13 +497,20 @@ p{
 														<input type="hidden" name="_method" value="PUT">
 														<button class="btn btn-warning">Make Admin</button>
 													</form>
-													<% } else if (profile.Type==="ADMIN" ) { %>
+													<% } else if (profile.Type==="ADMIN"  ) { %>
 														<form action="/MakeUser/<%= profile._id %>?_method=PUT"
 															method="post">
 															<input type="hidden" name="_method" value="PUT">
 															<button class="btn btn-info">Make User</button>
 														</form>
-														<% } %>
+														<% } else if (profile.Type==="EXTERNAL" ) { %>
+															<form action="/MakeUser/<%= profile._id %>?_method=PUT" method="post">
+																<input type="hidden" name="_method" value="PUT">
+																<button class="btn btn-info">Make User</button>
+															</form>
+															<% } %>
+														
+														
 											</td>
 										</tr>
 										<% }); %>

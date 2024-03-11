@@ -137,7 +137,7 @@
 
       <!-- Nav Bar -->
       <nav class="navbar navbar-expand-lg navbar-dark ">
-        <a class="navbar-brand" href="#">MyCommunity</a>
+        <a class="navbar-brand" href="/">MyCommunity</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
           aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -147,22 +147,73 @@
             <li class="nav-item">
               <a class="nav-link" href="/">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/event">Events &amp; Issues</a>
-            </li>
-            <li>
-              <a class="nav-link" href="/showMaintance">Maintainance Bills</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/createProfile">Profile</a>
-            </li>
-        
+      
+      
+      
+      
+            <% if (!user) { %>
+      
+              <li class="nav-item">
+                <a class="nav-link" href="/event">Events &amp; Issues</a>
+              </li>
+              <li>
+                <a class="nav-link" href="/showMaintance">Maintainance Bills</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/createProfile">Profile</a>
+              </li>
+      
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+              </li>
+      
+      
+      
+      
+              <% } else { %>
+      
+                <% if (user.Type=="EXTERNAL" ) { %>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/sales">Rental Rooms</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/createProfile">Profile</a>
+                  </li>
+                  <% } %>
+      
+                    <% if (user.Type=="ADMIN" ) { %>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/addSales">Add Room</a>
+                      </li>
+                      <% } %>
+      
+                        <% if (user.Type=="USER" || user.Type=="ADMIN" ) { %>
+                          <li class="nav-item">
+                            <a class="nav-link" href="/event">Events &amp; Issues</a>
+                          </li>
+                          <li>
+                            <a class="nav-link" href="/showMaintance">Maintainance Bills</a>
+                          </li>
+                          <% if (!user.Type=="USER" ) { %>
+                            <li class="nav-item">
+                              <a class="nav-link" href="/createProfile">Profile</a>
+                            </li>
+                            <% } %>
+      
+                              <% } %>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="/logout">Logout</a>
+                                </li>
+      
+      
+                                <% } %>
       
       
           </ul>
         </div>
       
       </nav>
+
 
       <!-- flash messages will be here -->
       <% if( success && success.length){ %>

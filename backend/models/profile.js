@@ -30,7 +30,7 @@ const UserSchema = new Schema({
     }, 
     Type:{
         type:String,
-        default:"USER",
+        default:"EXTERNAL", //EXTERNAL,USER,ADMIN
     }
 });
 
