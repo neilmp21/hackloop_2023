@@ -27,7 +27,51 @@
   <style>
 
 
-
+.search {
+    margin-top: 6px;
+    left:100px;
+    display: inline-flex;
+    align-items: center;
+    background-color: white;
+    color: #e74c3c;
+    padding:5px;
+    border-radius: 40px;
+  }
+  
+  .search :is(input, button) {
+    color: #e74c3c;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 14px;
+  }
+  
+  .search__input {
+    width: 0;
+    transition: width 0.5s;
+  }
+  
+  .search__button {
+    display: grid;
+    place-items: center;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    transition: color 0.25s;
+  }
+  
+  .search__button:hover {
+    color: #e3e3e3;
+  }
+  
+  .search:focus-within input {
+    width: 100px;
+  }
+  
+  ::placeholder {
+    font: inherit;
+    color: #e74c3c;
+  }
 
         .custom-shape-divider-bottom-1678428448 {
             position: absolute;
@@ -339,6 +383,14 @@
                   <a class="nav-link" href="/logout">Logout</a>
                 </li>
 
+                <div class="text-white col text-center">
+                  <form class="search">
+                    <input style="color: #9b59b6;" type="text" id="search" class="search__input " placeholder="Search...." />
+                    <button type="button" class="search__button">
+                      <i class="fa-solid fa-magnifying-glass" style="color: #e74c3c;"></i>
+                    </button>
+                  </form>
+                </div>
                 
                 <% } %>
 
