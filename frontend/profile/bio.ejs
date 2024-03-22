@@ -436,22 +436,7 @@ p{
       </nav>
 
 
-		<% if( success && success.length){ %>
-
-			<div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
-				<%= success %>
-					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-			</div>
-
-			<% } %>
-				<% if( error &&error.length){ %>
-
-					<div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
-						<%= error %>
-							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-					</div>
-
-					<% } %>
+	
 
 
 						<div class="container">
@@ -459,12 +444,12 @@ p{
 							<div class="contents-wraper">
 
 								<section class="header">
-									<h1> Members</h1>
+									<h1> PROFILE</h1>
 								</section>
 
 								<section class="testRow">
 
-									<% profiles.forEach(profile=> { %>
+									
 
 										<div class="testItem active">
 											<img src="<%= profile.profileImage %>" alt="<%= profile.username %>"  loading="lazy">
@@ -475,19 +460,13 @@ p{
 											</h4>
 											<p>Designation : <%= profile.Type%>
 											</p>
-											<% if (user.Type=="ADMIN" ) { %>
-												<section class="header">
-													<h1> Members</h1>
-												</section>
-
-												<section class="testRow">
-
-
-
-
-													<% } %>
+                                            
+                                             <p>Contact: <%= profile.phoneNumber  %></p>
+                                            
+                                            
+											
 										</div>
-										<% }) %>
+										
 
 
 							</div>
@@ -507,76 +486,7 @@ p{
 							<div class="dot" attr='4' onclick="switchTest(this)"></div>
 						</section>
 
-						<!-- editing place for admin -->
-						<% if (user.Type=="ADMIN" ) { %>
-							<table class="table">
-								<thead>
-									<tr>
-										<th>Username</th>
-										<th>Email</th>
-										<th>DOB</th>
-										<th>Bio</th>
-										<th>Profile Image</th>
-										<th>Phone Number</th>
-										<th>User Type</th>
-										<th>Action</th>
-									</tr>
-								</thead>
-								<tbody>
-									<% profiles.forEach(profile=> { %>
-										<tr>
-											<td>
-												<%= profile.username %>
-											</td>
-											<td>
-												<%= profile.email %>
-											</td>
-											<td>
-												<%= profile.dateOfBirth %>
-											</td>
-											<td>
-												<%= profile.bio %>
-											</td>
-											<td><img src="<%= profile.profileImage %>" alt="Profile Image"
-													style="width: 50px; height: 50px;">
-											</td>
-											<td>
-												<%= profile.phoneNumber %>
-											</td>
-											<td>
-												<%= profile.Type %>
-											</td>
-											<td>
-												<form action="/profile/<%= profile._id %>?_method=DELETE" method="post">
-													<button class="btn btn-danger">Delete</button>
-												</form>
-
-												<% if (profile.Type==="USER" ) { %>
-													<form action="/MakeAdmin/<%= profile._id %>?_method=PUT"
-														method="post">
-														<input type="hidden" name="_method" value="PUT">
-														<button class="btn btn-warning">Make Admin</button>
-													</form>
-													<% } else if (profile.Type==="ADMIN"  ) { %>
-														<form action="/MakeUser/<%= profile._id %>?_method=PUT"
-															method="post">
-															<input type="hidden" name="_method" value="PUT">
-															<button class="btn btn-info">Make User</button>
-														</form>
-														<% } else if (profile.Type==="EXTERNAL" ) { %>
-															<form action="/MakeUser/<%= profile._id %>?_method=PUT" method="post">
-																<input type="hidden" name="_method" value="PUT">
-																<button class="btn btn-info">Make User</button>
-															</form>
-															<% } %>
-														
-														
-											</td>
-										</tr>
-										<% }); %>
-								</tbody>
-							</table>
-							<% } %>
+						
 
 
 								<script>

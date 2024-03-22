@@ -432,7 +432,7 @@
                                                                                 <br>   
                                                                                 <br>
                                                                         </form>
-                                                                        <small style="position: absolute; right: 5rem;" >~Commented By <%=comment.commentedBy %>
+                                                                        <small style="position: absolute; right: 5rem;" >~Commented By <a  title="View profile" href="/bio/<%= comment.commentedBy  %>"> <b><%=comment.commentedBy %></b> </a> 
                                                                         </small>
                                                                         <%=comment.commentedAt.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })  %>
                                                                         <%

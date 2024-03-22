@@ -15,6 +15,7 @@ const wrapasync = require('./utils/wrapAsync.js')
 const LocalStrategy = require('passport-local').Strategy;
 const passportLocalMongoose = require("passport-local-mongoose");
 const fs = require('fs');
+const email = require('./utils/nodemailer.js')
 
 const cloudinary = require('cloudinary');
 require('dotenv').config();
@@ -250,7 +251,7 @@ app.get("/",(req,res)=>{
          const user = req.curUser;
         // console.log(req.flash('success'));
         if (user) {
-            console.log(user._id);
+            // console.log(user._id);
         }
     if(events.length==0){
     const createdEvents = await Promise.all(dummyEvents.map(event => Event.create(event)));
@@ -275,7 +276,8 @@ app.get("/",(req,res)=>{
     app.post('/event', upload.single('image'), async (req, res) => {
         // Extract the form data from req.body and req.file
         console.log(req.file)
-        console.log(req.body);
+        // console.log(req.body);
+
         let url = req.file.path;
         let filename=req.file.filename;
         
@@ -287,7 +289,9 @@ app.get("/",(req,res)=>{
         try {
             // Create a new event using the extracted data
             const newEvent = await Event.create(eventData);
-            console.log(newEvent);
+            const added = await User.findById(newEvent.createdBy)
+            console.log(added);
+            //can use email function here
 
             // Redirect or send a response as needed
             res.redirect("/event");
@@ -379,6 +383,17 @@ app.post('/createProfile',async (req, res) => {
                 createdBy,
                 images: imageDetails,
             });
+
+            const created = await User.findById(newIssue.createdBy)
+            const createdName = created.username;
+             const Users = await User.find();
+             Users.map((User)=>{
+
+                if(User.Type==='ADMIN'){
+
+                    email(User.email,`@myCommunity New Issue Created by ${createdName}`,`${title} \n ${description}`);
+                }
+             })
 
             const savedIssue = await newIssue.save();
             req.flash('success', 'Issue created successfully!');
@@ -602,7 +617,7 @@ app.post('/createProfile',async (req, res) => {
                 cloudinary.v2.api
                     .delete_resources([`${image.filename}`],
                         { type: 'upload', resource_type: 'image' })
-                    .then(console.log);
+                    .then(console.log('clodinary'));
                 console.log(id);
             });
             console.log("All images from cloudinary deleted")
@@ -732,7 +747,9 @@ app.put("/MakeAdmin/:id", async (req, res) => {
     app.get("/sales",async (req,res)=>{
       const rooms= await Room.find();
       console.log(rooms)
-    res.render("sales/index.ejs",{rooms})
+      req.curUser = req.user;
+      const user = req.curUser;
+    res.render("sales/index.ejs",{rooms,user})
     })
 
     app.get("/addSales",async(req,res)=>{
@@ -809,6 +826,22 @@ app.put("/MakeAdmin/:id", async (req, res) => {
             res.status(500).send('Internal Server Error');
         }
     });
+
+    app.get('/bio/:name',async (req,res)=>{
+
+        const {name}= req.params;
+        const profile = await User.findOne({ username: name  });
+       
+
+        
+        req.curUser = req.user;
+        const user = req.curUser;
+        console.log(profile);
+        res.render('profile/bio.ejs',{user,profile})
+
+
+    }) 
+
 
 
     
