@@ -292,27 +292,29 @@
                             <% } %>
 
                               <div
-                                style="border-bottom-left-radius:10px;border-bottom-right-radius:10px; background-color: black; padding-bottom: 1%; "
+                                style="border-bottom-left-radius:10px;border-bottom-right-radius:10px;background-image: linear-gradient(315deg, #f3e6e8 0%, #d5d0e5 74%); padding-bottom: 1%; "
                                 class="card-body">
-                                <h5 style="font-weight: bolder;" class="card-title">
+                                <h5 style="font-weight: bolder; color:#9b59b6" class="card-title">
                                   <%= event.Name %>
                                 </h5>
-                                <p class="card-text">
+                                <p style="color:#337357; font-weight: 500; font-style:oblique;" class="card-text">
                                   <%= event.description %>
                                 </p>
+
                                 <p class="card-text grey"><small class="text-muted"><span
                                       style="color:#e74c3c; font-weight: bolder;">Event Date:</span> <span
-                                      style="color:#8f8f8f; font-weight: bolder">
+                                      style="color:#240A34; font-weight: bolder">
                                       <%= event.date.toDateString()%>
                                     </span></small></p>
                                 <p class="card-text"><small class="text-muted"><span
                                       style="color:#e74c3c; font-weight: bolder;">Location:</span> <span
-                                      style="color:#8f8f8f; font-weight: bolder">
+                                      style="color:#240A34; font-weight: bolder">
                                       <%= event.location %>
                                     </span></small>
                                 </p>
-                                 <% if ( event.createdBy==user.id || user.Type=="ADMIN" ) { %>
-                                 <br>
+
+                              </div>
+                              <% if ( event.createdBy==user.id || user.Type=="ADMIN" ) { %>
                                 <form action="/event/<%= event.id %>?_method=DELETE" method="post">
                                   <button style="margin-left: 30%; margin-bottom: 10%;" class="btn btn-danger ">
                                     Delete event
@@ -349,7 +351,7 @@
 
                           <div style="padding-bottom: 10%;" class="card-body">
                             <h5 class="card-title">
-                              <div style="color:black"><%= issue.title %></div> <br>
+                              <%= issue.title %>
                                 <% if (issue.status=="Open" ) { %>
                                   <b style="color: #ff4c68;">
                                     <%= issue.status %>
