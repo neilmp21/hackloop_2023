@@ -312,19 +312,17 @@
                                       <%= event.location %>
                                     </span></small>
                                 </p>
-
-                              </div>
-                              <% if ( event.createdBy==user.id || user.Type=="ADMIN" ) { %>
+                               <% if ( event.createdBy==user.id || user.Type=="ADMIN" ) { %>
+                                <br><br>
                                 <form action="/event/<%= event.id %>?_method=DELETE" method="post">
-                                  <button style="margin-left: 30%; margin-bottom: 10%;" class="btn btn-danger ">
+                                  <button style="margin-left: 30%; margin-bottom: 10%;" class="btn btn-dark ">
                                     Delete event
                                   </button>
                                 </form>
                                 <% } %>
-                              </div>
-                             
-                             
 
+                              </div>
+                              
                         </div>
                         <% }); %>
                     </div>
@@ -350,8 +348,8 @@
                           <!-- Event Image (if available) -->
 
                           <div style="padding-bottom: 10%;" class="card-body">
-                            <h5 class="card-title">
-                              <%= issue.title %>
+                            <h5 class="card-title" style="color: black;">
+                              <%= issue.title %> <br><br>
                                 <% if (issue.status=="Open" ) { %>
                                   <b style="color: #ff4c68;">
                                     <%= issue.status %>
