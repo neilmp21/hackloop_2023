@@ -391,7 +391,7 @@ app.post('/createProfile',async (req, res) => {
 
                 if(User.Type==='ADMIN'){
 
-                    email(User.email,`@myCommunity New Issue Created by ${createdName}`,`${title} \n ${description}`);
+                    email(User.email,`@myCommunity New Issue Created by ${createdName}`,`Title: ${title} \n Description: ${description} \nStatus: ${status}\n`);
                 }
              })
 
