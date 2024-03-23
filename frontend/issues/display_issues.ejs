@@ -120,19 +120,21 @@
 
         /* Issues Container Styling */
         #issueContainer {
-            max-width: 600px;
+        
             margin: 0 auto;
             text-align: left;
             padding: 20px;
             border-radius: 8px;
             background-color: #333;
             margin-top: 30px;
+            ;
         }
 
         #issueForm {
             display: flex;
             flex-direction: column;
             gap: .5vw;
+            width: 1200px;
         }
 
         #issueForm button {
@@ -150,7 +152,7 @@
         #issueForm input[type="text"],
         #issueForm input[type="date"],
         #issueForm input[type="file"] {
-            width: 100%;
+            width: 120%;
             padding: 8px;
             margin: 5px 0;
             box-sizing: border-box;
@@ -158,7 +160,7 @@
         }
 
         #issueList {
-            max-width: 400px;
+            max-width: 1200px;
             margin: 20px auto;
             text-align: left;
         }
@@ -177,7 +179,7 @@
 
         /* Comment Section Styling */
         .mt-4 {
-            background-color: #fff;
+            background-color: #ffffff;
             /* White background for comment section */
             padding: 20px;
             border-radius: 8px;
@@ -225,6 +227,29 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             position: relative;
+        }
+
+        @media (max-width: 1028px) {
+            .nav-link {
+              padding: 10px 15px;
+              font-size: 2rem;
+              text-align: center;
+            }
+
+            .mt-4{
+                width: 180vw;
+                font-size: 1rem;
+            }
+
+            .comm{
+                width: 680px;
+            }
+    
+
+          
+
+        
+
         }
     </style>
 </head>
@@ -396,7 +421,7 @@
                                                     <!-- Display list of issues here if needed -->
                                                 </div>
                                                 <!-- Comment Section -->
-                                                <div class="mt-4">
+                                                <div class= " comm mt-4">
                                                     <h3>Comments</h3>
                                                     <!-- Add your comment form if needed -->
                                                     <form action="/comments/<%= issue._id %>?_method=POST" method="post"
@@ -431,22 +456,25 @@
                                                                                 </button>
                                                                                 <br>   
                                                                                 <br>
-                                                                        </form>
-                                                                        <small style="position: absolute; right: 5rem;" >~Commented By <a  title="View profile" href="/bio/<%= comment.commentedBy  %>"> <b><%=comment.commentedBy %></b> </a> 
-                                                                        </small>
-                                                                        <%=comment.commentedAt.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })  %>
-                                                                        <%
-// Assuming comment.commentedAt is a Date object
-const now = new Date();
-const commentedAt = new Date(comment.commentedAt);
-const timeDifference = now - commentedAt;
+                                                                            </form>
+                                                                            <div class="com">
 
-const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-
-const formattedTime = daysDifference === 1 ? 'a day ago' : `${daysDifference} days ago`;
-%>
-
-,<%= formattedTime %>
+                                                                                <small  style="position: absolute; right: 5rem;" >~Commented By <a  title="View profile" href="/bio/<%= comment.commentedBy  %>"> <b><%=comment.commentedBy %></b> </a> 
+                                                                                </small>
+                                                                                <%=comment.commentedAt.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })  %>
+                                                                                <%
+        // Assuming comment.commentedAt is a Date object
+        const now = new Date();
+        const commentedAt = new Date(comment.commentedAt);
+        const timeDifference = now - commentedAt;
+        
+        const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        
+        const formattedTime = daysDifference === 1 ? 'a day ago' : `${daysDifference} days ago`;
+        %>
+        
+        ,<%= formattedTime %>
+                                                                            </div>
 
                                                                         
                                                                      <% if (curuser.id==issue.createdBy || curuser.Type=="ADMIN") { %>

@@ -32,58 +32,57 @@
 
   <style>
     body {
-
       font-family: 'Montserrat';
+      background: linear-gradient(to right, #9b59b6, #e74c3c);
+      padding: 20px;
+      /* Adjust body padding */
     }
 
     #title {
-      background: linear-gradient(to right, #9b59b6, #e74c3c);
       color: #fff;
     }
 
     .container-fluid {
-      padding: 3% 15% 7%;
+      padding: 0;
     }
 
     h1 {
       font-family: 'Montserrat-Black', sans-serif;
       font-size: 3.5rem;
       line-height: 1.5;
-
     }
 
     h2 {
-      font-family: " montserrat-bold";
+      font-family: "montserrat-bold";
       font-size: 3rem;
       line-height: 3rem;
-
     }
 
     .card img {
       width: auto;
-      height: 240px;
+      height: 250px;
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
     }
 
-
-    h1 {
-      font-size: 3.0rem;
+    .card {
+      transition: transform 0.3s ease;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      height: 550px;
+      width: 300px;
     }
 
-    h3 {
-      font-family: "montserrat-bold";
-      font-size: 1.5rem;
+    /* Apply transform scale effect on card hover */
+    .card:hover {
+      transform: scale(1.05);
     }
 
-    p {
-      color: #8f8f8f;
-    }
 
     /* Navigation Bar */
     .navbar {
-      padding: 0 0 4.5rem;
-
+      padding: 0;
+      margin-bottom: 20px;
     }
 
     .navbar-brand {
@@ -101,52 +100,48 @@
       font-family: "montserrat-light";
     }
 
-    /* Download Buttons */
-    .download-button {
-      margin: 5% 3% 5% 0;
-    }
+    @media (max-width: 1028px) {
+      .nav-link {
+        padding: 10px 15px;
+        font-size: 16px;
+        text-align: center;
+      }
 
-    /* testimonials */
-    #testimonials {
-      text-align: center;
-      background-color: #ef8172;
-      color: white;
-    }
+      h2 {
+        text-align: center;
+        font-size: 5rem;
+      }
 
-    .padding {
-      padding: 7% 15%;
+      .card-deck {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 9vw;
+      }
 
-    }
+      .card img {
+        height: 50vw;
+      }
 
-    .testimonial-image {
-      width: 10%;
-      border-radius: 100%;
-    }
+      .card {
+        margin-top: 50px;
+        font-size: 30px;
+        width: 650px;
+        height: 10vw;
+      }
 
-
-    /* Footer */
-    #footer {
-      padding: 4% 4%;
-      text-align: center;
-      color: white;
-
-    }
-
-    .card {
-      transition: transform 0.3s ease;
-      border-radius: 10px;
-    }
-
-
-
-    /* Apply transform scale effect on card hover */
-    .card:hover {
-      transform: scale(1.05);
-    }
-
-    .grey {
-      color: white;
-
+      .btns {
+        position: relative;
+        left: 35%;
+        top: 2vw;
+        height: 80px;
+        font-size: 1.7rem;
+      }
+      .btn{
+        font-size: 1.7rem;
+        height: 80px;
+      }
     }
   </style>
 </head>
@@ -157,7 +152,7 @@
     <div class="container-fluid">
 
       <!-- Nav Bar -->
-     <nav class="navbar navbar-expand-lg navbar-dark ">
+      <nav class="navbar navbar-expand-lg navbar-dark ">
         <a class="navbar-brand" href="/">MyCommunity</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
           aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -168,22 +163,22 @@
             <li class="nav-item">
               <a class="nav-link" href="/">Home</a>
             </li>
-            
-           
-          
-            
+
+
+
+
             <% if (!user) { %>
-             
-                <li class="nav-item">
-                  <a class="nav-link" href="/event">Events &amp; Issues</a>
-                </li>
-                <li>
-                  <a class="nav-link" href="/showMaintance">Maintainance Bills</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/createProfile">Profile</a>
-                </li>
-              
+
+              <li class="nav-item">
+                <a class="nav-link" href="/event">Events &amp; Issues</a>
+              </li>
+              <li>
+                <a class="nav-link" href="/showMaintance">Maintainance Bills</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/createProfile">Profile</a>
+              </li>
+
               <li class="nav-item">
                 <a class="nav-link" href="/login">Login</a>
               </li>
@@ -192,7 +187,7 @@
 
 
               <% } else { %>
-                  
+
                 <% if (user.Type=="EXTERNAL" ) { %>
                   <li class="nav-item">
                     <a class="nav-link" href="/sales">Rental Rooms</a>
@@ -202,31 +197,31 @@
                   </li>
                   <% } %>
 
-                  <% if (user.Type=="ADMIN") { %>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/addSales">Add Room</a>
-                    </li>
-                  <% } %>
+                    <% if (user.Type=="ADMIN" ) { %>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/addSales">Add Room</a>
+                      </li>
+                      <% } %>
 
-                <% if (user.Type=="USER" || user.Type=="ADMIN" ) { %>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/event">Events &amp; Issues</a>
-                  </li>
-                  <li>
-                    <a class="nav-link" href="/showMaintance">Maintainance </a>
-                  </li>
-                  
-                    <li class="nav-item">
-                      <a class="nav-link" href="/createProfile">Profile</a>
-                    </li>
-                  
-                 
-                  <% } %>
-                <li class="nav-item">
-                  <a class="nav-link" href="/logout">Logout</a>
-                </li>
+                        <% if (user.Type=="USER" || user.Type=="ADMIN" ) { %>
+                          <li class="nav-item">
+                            <a class="nav-link" href="/event">Events &amp; Issues</a>
+                          </li>
+                          <li>
+                            <a class="nav-link" href="/showMaintance">Maintainance </a>
+                          </li>
 
-                <!-- <div class="text-white col text-center">
+                          <li class="nav-item">
+                            <a class="nav-link" href="/createProfile">Profile</a>
+                          </li>
+
+
+                          <% } %>
+                            <li class="nav-item">
+                              <a class="nav-link" href="/logout">Logout</a>
+                            </li>
+
+                            <!-- <div class="text-white col text-center">
                   <form class="search">
                     <input style="color: #9b59b6;" type="text" id="search" class="search__input " placeholder="Search...." />
                     <button type="button" class="search__button">
@@ -235,9 +230,9 @@
                   </form>
                 </div>
                  -->
-                <% } %>
+                            <% } %>
 
-                
+
           </ul>
         </div>
 
@@ -278,7 +273,7 @@
                     <br>
                     <!-- Add Event Button -->
                     <form method="get" action="/addevent">
-                      <button class="btn btn-dark mb-3">ADD EVENT &nbsp; <i class="fa fa-handshake"
+                      <button class="btns  btn-dark mb-3">ADD EVENT &nbsp; <i class="fa fa-handshake"
                           aria-hidden="true"></i></button>
                     </form>
                     <!-- Event Cards -->
@@ -312,17 +307,17 @@
                                       <%= event.location %>
                                     </span></small>
                                 </p>
-                               <% if ( event.createdBy==user.id || user.Type=="ADMIN" ) { %>
-                                <br><br>
-                                <form action="/event/<%= event.id %>?_method=DELETE" method="post">
-                                  <button style="margin-left: 30%; margin-bottom: 10%;" class="btn btn-dark ">
-                                    Delete event
-                                  </button>
-                                </form>
-                                <% } %>
+                                <% if ( event.createdBy==user.id || user.Type=="ADMIN" ) { %>
+                                  <br><br>
+                                  <form action="/event/<%= event.id %>?_method=DELETE" method="post">
+                                    <button style="margin-left: 30%; margin-bottom: 10%;" class="btn btn-dark ">
+                                      Delete event
+                                    </button>
+                                  </form>
+                                  <% } %>
 
                               </div>
-                              
+
                         </div>
                         <% }); %>
                     </div>
@@ -333,7 +328,7 @@
               <h2>Issues</h2>
               <br>
               <form method="get" action="/issues/new">
-                <button class="btn btn-dark mb-3">ADD ISSUE &nbsp; <i class="fa fa-handshake"
+                <button class="btns btn-dark mb-3">ADD ISSUE &nbsp; <i class="fa fa-handshake"
                     aria-hidden="true"></i></button>
               </form>
               <% if (issues.length==0) { %>
@@ -408,7 +403,7 @@
                                   Know more
                                 </button>
                               </form>
-                              
+
                               <% if ( user.Type=="ADMIN" ||issue.createdBy==user.id) { %>
                                 <form class="ms-3" action="/issue/<%= issue.id %>?_method=DELETE" method="post">
                                   <button style="margin-left: 30%; margin-bottom: 10%;" class="btn btn-dark ">
