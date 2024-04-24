@@ -6,7 +6,7 @@ hosted @ : https://mycommunity-hackloop2.onrender.com/
 Team weshowcode for hackloop 2023. 
 
 # folder [FrontEnd]
-  .ejs files as pages are in thhis folder
+  .ejs files as pages are in this folder
   static files are also in this directory
 
 # folder [backEnd]
