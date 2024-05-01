@@ -1,6 +1,8 @@
 
 hosted @ : https://mycommunity-hackloop2.onrender.com/
 
+Stack: MongoDB,Node,Express,EJS,passport.js,cloudinary,Razorpay
+
 
 # hackloop_2023 [Mandatory]
 Team weshowcode for hackloop 2023. 
