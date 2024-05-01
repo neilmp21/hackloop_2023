@@ -15,13 +15,13 @@ Team weshowcode for hackloop 2023.
    using multer to taking in and storing images
    
 # features
-adding events
-creating issues and reacting to issues in the colony
+adding event invites
+creating issues and reacting to issues in the colony - comment section
 admin controls the activities in the colony sites
 payment option for monthly maintainance etc...
+room selling option for society
 
-pending feature
- room selling option for society
+
 
 
 # how to work
