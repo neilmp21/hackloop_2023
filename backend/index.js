@@ -704,7 +704,10 @@ app.put("/MakeAdmin/:id", async (req, res) => {
 
 
     app.get('/maintainanceForm', isLoggedIn,(req,res)=>{
-        res.render("bills/form.ejs")
+
+        req.curUser = req.user;
+        const user = req.curUser;
+        res.render("bills/form.ejs",{user})
     })
     app.get("/showMaintance", isLoggedIn,async(req,res)=>{
         req.curUser=req.user;
